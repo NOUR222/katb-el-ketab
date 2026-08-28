@@ -1,0 +1,142 @@
+import { motion, useScroll, useTransform } from 'framer-motion'
+import { ArrowDown, Heart } from 'lucide-react'
+import { useRef } from 'react'
+import { invitation } from '../data/invitation'
+import { BotanicalMark } from './BotanicalMark'
+
+type HeroSectionProps = {
+  guestName: string
+  isPersonalized: boolean
+}
+
+export function HeroSection({ guestName, isPersonalized }: HeroSectionProps) {
+  const sectionRef = useRef<HTMLElement>(null)
+  const { scrollYProgress } = useScroll({ target: sectionRef, offset: ['start start', 'end start'] })
+  const photoY = useTransform(scrollYProgress, [0, 1], ['0%', '8%'])
+  const contentY = useTransform(scrollYProgress, [0, 1], ['0%', '18%'])
+
+  return (
+    <header
+      ref={sectionRef}
+      className="relative isolate min-h-[100svh] overflow-hidden bg-ivory outline-none"
+      id="home"
+      tabIndex={-1}
+    >
+      <nav
+        className="absolute inset-x-0 top-0 z-20 mx-auto flex max-w-[1440px] items-center justify-between px-5 pb-5 pt-[max(1.5rem,env(safe-area-inset-top))] sm:px-8 lg:px-14"
+        aria-label="Invitation navigation"
+      >
+        <a
+          href="#home"
+          className="flex h-11 w-11 items-center justify-center rounded-full border border-espresso/20 font-display text-lg text-espresso transition hover:border-gold hover:text-gold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gold"
+          aria-label="Noureldin and Rana — home"
+        >
+          N<span className="mx-0.5 text-[8px] text-gold">&</span>R
+        </a>
+        <div className="hidden items-center gap-8 text-[10px] font-medium uppercase tracking-[0.2em] text-ink/80 md:flex">
+          <a className="nav-link" href="#details">Details</a>
+          <a className="nav-link" href="#story">Our story</a>
+          <a className="nav-link" href="#venue">Venue</a>
+          <a className="nav-link" href="#gallery">Gallery</a>
+        </div>
+        <a className="button-outline px-4 py-2.5 text-[9px] sm:px-6" href="#rsvp">RSVP</a>
+      </nav>
+
+      <div className="mx-auto grid min-h-[100svh] max-w-[1440px] items-center gap-8 px-5 pb-16 pt-28 sm:px-8 lg:grid-cols-[0.92fr_1.08fr] lg:gap-16 lg:px-14 lg:pb-12 lg:pt-28">
+        <motion.div style={{ y: contentY }} className="relative z-10 order-2 pb-3 text-center lg:order-1 lg:text-left">
+          <BotanicalMark className="absolute -left-24 -top-24 hidden h-56 text-gold/10 lg:block" />
+          <motion.p
+            className="eyebrow text-gold"
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.25, duration: 0.7 }}
+          >
+            Together with their families
+          </motion.p>
+
+          <motion.h1
+            className="mt-6 font-display text-[clamp(4.15rem,18vw,7rem)] font-medium leading-[0.68] tracking-[-0.055em] text-espresso lg:text-[clamp(5.8rem,8.2vw,8.4rem)]"
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.35, duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+          >
+            <span className="block">{invitation.couple.shortGroom}</span>
+            <span className="mt-5 block font-sans text-[0.11em] font-light uppercase tracking-[0.32em] text-ink/80 lg:ml-2">
+              Abdelfattah
+            </span>
+            <span className="my-4 flex items-center justify-center gap-5 text-[0.22em] font-normal italic tracking-normal text-gold lg:justify-start">
+              <span className="h-px w-12 bg-gold/50" />
+              <Heart className="h-5 w-5" strokeWidth={1} aria-label="and" />
+              <span className="h-px w-12 bg-gold/50" />
+            </span>
+            <span className="block">{invitation.couple.shortBride}</span>
+            <span className="mt-5 block font-sans text-[0.11em] font-light uppercase tracking-[0.32em] text-ink/80 lg:ml-2">
+              Salah
+            </span>
+          </motion.h1>
+
+          <motion.div
+            className="mx-auto mt-10 max-w-md border-t border-espresso/15 pt-6 lg:mx-0"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.9, duration: 0.8 }}
+          >
+            <p className="font-display text-2xl text-espresso sm:text-3xl">
+              {isPersonalized ? `Welcome, ${guestName}` : 'Welcome, dear family & friends'}
+            </p>
+            <p className="mt-2 text-xs font-light leading-6 text-ink/80 sm:text-sm">
+              We would be honoured to begin this beautiful chapter with you.
+            </p>
+          </motion.div>
+        </motion.div>
+
+        <motion.div
+          className="relative order-1 mx-auto w-full max-w-[480px] lg:order-2 lg:max-w-[620px]"
+          initial={{ opacity: 0, scale: 0.96 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1.1, ease: [0.22, 1, 0.36, 1] }}
+          style={{ y: photoY }}
+        >
+          <div className="absolute -left-3 top-10 h-[78%] w-[85%] border border-gold/35 sm:-left-6" />
+          <div className="relative ml-auto aspect-[3/4] w-[92%] overflow-hidden bg-parchment shadow-editorial">
+            <img
+              src={invitation.images.couple.src}
+              srcSet={invitation.images.couple.srcSet}
+              sizes="(min-width: 1024px) 44vw, 86vw"
+              width={invitation.images.couple.width}
+              height={invitation.images.couple.height}
+              alt={invitation.images.couple.alt}
+              className="h-full w-full origin-[100%_44%] scale-[1.32] object-cover object-[62%_44%]"
+              fetchPriority="high"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-espresso/35 via-transparent to-transparent" />
+            <p className="absolute bottom-5 left-24 font-display text-2xl italic text-white sm:bottom-7 sm:left-7 sm:text-3xl">
+              Our forever begins here
+            </p>
+          </div>
+          <div className="absolute -right-1 top-8 flex flex-col items-center gap-3 text-gold sm:-right-4">
+            <span className="font-display text-3xl">02</span>
+            <span className="h-16 w-px bg-gold/40" />
+            <span className="writing-vertical text-[9px] uppercase tracking-[0.28em]">October · 2026</span>
+          </div>
+          <motion.div
+            className="absolute -bottom-5 -left-2 grid h-20 w-20 place-items-center rounded-full bg-espresso text-center text-[9px] uppercase leading-4 tracking-[0.18em] text-linen shadow-float sm:-left-8 sm:h-24 sm:w-24"
+            animate={{ rotate: 360 }}
+            transition={{ duration: 28, repeat: Infinity, ease: 'linear' }}
+            aria-hidden="true"
+          >
+            Save<br />the date
+          </motion.div>
+        </motion.div>
+      </div>
+
+      <a
+        href="#details"
+        className="absolute bottom-5 left-1/2 z-10 hidden -translate-x-1/2 flex-col items-center gap-2 text-[9px] uppercase tracking-[0.22em] text-ink/80 transition hover:text-gold sm:flex"
+      >
+        Discover
+        <ArrowDown className="h-4 w-4 animate-gentle-bounce" aria-hidden="true" />
+      </a>
+    </header>
+  )
+}

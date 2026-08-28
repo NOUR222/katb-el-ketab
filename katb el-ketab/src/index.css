@@ -1,0 +1,154 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color: #463a32;
+    background: #f7f3eb;
+    font-family: Poppins, system-ui, sans-serif;
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 72px;
+  }
+
+  body {
+    margin: 0;
+    min-width: 320px;
+    min-height: 100vh;
+    background: #f7f3eb;
+  }
+
+  button,
+  a,
+  input,
+  textarea,
+  select {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  button,
+  a {
+    touch-action: manipulation;
+  }
+
+  ::selection {
+    background: #d8bd8b;
+    color: #2d241f;
+  }
+}
+
+@layer components {
+  .section-shell {
+    @apply px-5 py-24 sm:px-8 sm:py-32 lg:px-14;
+  }
+
+  .eyebrow {
+    @apply text-[9px] font-medium uppercase tracking-luxury sm:text-[10px];
+  }
+
+  .button-primary {
+    @apply inline-flex min-h-12 items-center justify-center gap-3 border border-gold bg-gold px-7 py-3.5 text-[10px] font-medium uppercase tracking-[0.2em] text-white shadow-sm transition duration-300 hover:-translate-y-0.5 hover:bg-[#7d5525] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gold disabled:cursor-wait disabled:opacity-60;
+  }
+
+  .button-outline {
+    @apply inline-flex min-h-10 items-center justify-center border border-espresso/25 text-[10px] font-medium uppercase tracking-[0.2em] text-espresso transition duration-300 hover:border-gold hover:bg-gold hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gold;
+  }
+
+  .button-ghost {
+    @apply inline-flex min-h-11 items-center justify-center border border-champagne/40 px-6 py-3 text-[9px] font-medium uppercase tracking-[0.2em] text-champagne transition hover:bg-champagne hover:text-espresso focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-champagne;
+  }
+
+  .nav-link {
+    @apply relative py-2 transition hover:text-gold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gold;
+  }
+
+  .nav-link::after {
+    content: '';
+    @apply absolute inset-x-0 bottom-0 h-px origin-left scale-x-0 bg-gold transition-transform duration-300;
+  }
+
+  .nav-link:hover::after {
+    @apply scale-x-100;
+  }
+
+  .field-label {
+    @apply block text-[9px] font-medium uppercase tracking-[0.2em] text-linen/55;
+  }
+
+  .field-input {
+    @apply mt-3 block w-full rounded-none border border-linen/35 bg-linen/[0.035] px-4 py-3.5 font-sans text-sm font-light normal-case tracking-normal text-linen outline-none transition placeholder:text-linen/55 focus:border-champagne focus:ring-1 focus:ring-champagne/30 disabled:cursor-not-allowed disabled:opacity-35;
+  }
+
+  .skip-link {
+    @apply fixed left-4 top-4 z-[200] -translate-y-24 bg-espresso px-4 py-3 text-xs text-linen transition focus:translate-y-0;
+  }
+
+  .ornament-dot {
+    @apply absolute h-1.5 w-1.5 rounded-full bg-gold/30;
+    box-shadow: 0 0 0 8px rgba(178, 138, 75, 0.06), 0 0 0 18px rgba(178, 138, 75, 0.025);
+  }
+}
+
+.writing-vertical {
+  writing-mode: vertical-rl;
+}
+
+.opening-screen {
+  opacity: 1;
+  transform: scale(1);
+  filter: blur(0);
+  transition: opacity 0.8s cubic-bezier(0.76, 0, 0.24, 1),
+    transform 0.8s cubic-bezier(0.76, 0, 0.24, 1),
+    filter 0.8s cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+.opening-screen--closing {
+  pointer-events: none;
+  opacity: 0;
+  transform: scale(1.025);
+  filter: blur(5px);
+}
+
+@keyframes music-pulse {
+  0% { transform: scale(1); opacity: 0.7; }
+  100% { transform: scale(1.55); opacity: 0; }
+}
+
+@keyframes gentle-bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(5px); }
+}
+
+@keyframes monogram-sway {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(2deg); }
+  75% { transform: rotate(-2deg); }
+}
+
+.animate-music-pulse {
+  animation: music-pulse 1.8s ease-out infinite;
+}
+
+.animate-gentle-bounce {
+  animation: gentle-bounce 2s ease-in-out infinite;
+}
+
+.animate-monogram-sway {
+  animation: monogram-sway 8s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
