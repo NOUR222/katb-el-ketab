@@ -30,7 +30,7 @@ export function VenueSection() {
           </div>
           <div className="absolute -bottom-8 left-5 bg-espresso px-6 py-4 text-linen shadow-float sm:left-8 sm:px-8">
             <p className="eyebrow text-champagne">Alexandria</p>
-            <p className="mt-1 font-display text-2xl">Open air · 3:00 PM</p>
+            <p className="mt-1 font-display text-2xl">Open air · 7:00 PM</p>
           </div>
         </motion.div>
 

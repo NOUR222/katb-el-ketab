@@ -22,7 +22,7 @@ const labels: Record<MusicStatus, string> = {
 export function MusicPlayer({ iframeRef, status, trackUrl, active, visible, onToggle }: MusicPlayerProps) {
   const playerUrl = `https://w.soundcloud.com/player/?url=${encodeURIComponent(
     trackUrl,
-  )}&color=%23b28a4b&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&visual=false`
+  )}&color=%23b28a4b&auto_play=true&hide_related=true&show_comments=false&show_user=false&show_reposts=false&visual=false`
 
   return (
     <>
