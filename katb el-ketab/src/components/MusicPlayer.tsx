@@ -6,7 +6,6 @@ type MusicPlayerProps = {
   iframeRef: RefObject<HTMLIFrameElement | null>
   status: MusicStatus
   trackUrl: string
-  active: boolean
   visible: boolean
   onToggle: () => void
 }
@@ -19,19 +18,20 @@ const labels: Record<MusicStatus, string> = {
   error: 'Open music on SoundCloud',
 }
 
-export function MusicPlayer({ iframeRef, status, trackUrl, active, visible, onToggle }: MusicPlayerProps) {
+export function MusicPlayer({ iframeRef, status, trackUrl, visible, onToggle }: MusicPlayerProps) {
   const playerUrl = `https://w.soundcloud.com/player/?url=${encodeURIComponent(
     trackUrl,
-  )}&color=%23b28a4b&auto_play=true&hide_related=true&show_comments=false&show_user=false&show_reposts=false&visual=false`
+  )}&color=%23b28a4b&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&visual=false`
 
   return (
     <>
       <iframe
         ref={iframeRef}
         className="pointer-events-none fixed -left-10 -top-10 h-px w-px opacity-0"
-        src={active ? playerUrl : undefined}
+        src={playerUrl}
         title="Background music from SoundCloud"
         allow="autoplay; encrypted-media"
+        loading="eager"
         tabIndex={-1}
         aria-hidden="true"
       />

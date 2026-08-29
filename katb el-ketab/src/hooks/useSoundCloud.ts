@@ -9,12 +9,9 @@ export function useSoundCloud(trackUrl: string) {
   const widgetRef = useRef<SoundCloudWidget | null>(null)
   const playRequestedRef = useRef(false)
   const initializedRef = useRef(false)
-  const [activated, setActivated] = useState(false)
   const [status, setStatus] = useState<MusicStatus>('loading')
 
   useEffect(() => {
-    if (!activated) return
-
     const initializeWidget = () => {
       if (!window.SC || !iframeRef.current || initializedRef.current) return
 
@@ -52,11 +49,12 @@ export function useSoundCloud(trackUrl: string) {
     script.addEventListener('error', () => setStatus('error'), { once: true })
 
     return () => script.removeEventListener('load', initializeWidget)
-  }, [activated])
+  }, [])
 
   const play = useCallback(() => {
     playRequestedRef.current = true
-    setActivated(true)
+    // The iframe is preloaded, so this call happens directly inside the
+    // visitor's click. Safari requires this synchronous user gesture.
     if (widgetRef.current) widgetRef.current.play()
   }, [])
 
@@ -75,5 +73,5 @@ export function useSoundCloud(trackUrl: string) {
     else play()
   }, [pause, play, status, trackUrl])
 
-  return { iframeRef, status, activated, play, toggle }
+  return { iframeRef, status, play, toggle }
 }

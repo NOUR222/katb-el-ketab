@@ -55,7 +55,6 @@ export default function App() {
         iframeRef={music.iframeRef}
         status={music.status}
         trackUrl={invitation.music.trackUrl}
-        active={music.activated}
         visible={opened && !openingVisible}
         onToggle={music.toggle}
       />
