@@ -4,6 +4,8 @@ export const invitation = {
     bride: 'Rana Salah',
     shortGroom: 'Noureldin',
     shortBride: 'Rana',
+    groomFamily: 'Abdelfattah',
+    brideFamily: 'Salah',
   },
   event: {
     name: 'Katb El-Ketab',

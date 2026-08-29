@@ -4,6 +4,7 @@ import { EventDetails } from './components/EventDetails'
 import { Footer } from './components/Footer'
 import { Gallery } from './components/Gallery'
 import { HeroSection } from './components/HeroSection'
+import { PromiseInterlude } from './components/PromiseInterlude'
 import { RsvpSection } from './components/RsvpSection'
 import { StoryTimeline } from './components/StoryTimeline'
 import { VenueSection } from './components/VenueSection'
@@ -22,6 +23,7 @@ export default function InvitationContent({ guestName, isPersonalized }: Invitat
         <EventDetails />
         <Countdown />
         <StoryTimeline />
+        <PromiseInterlude />
         <VenueSection />
         <Gallery />
         <RsvpSection guestName={guestName} isPersonalized={isPersonalized} />

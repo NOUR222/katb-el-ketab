@@ -11,6 +11,8 @@ const InvitationContent = lazy(loadInvitationContent)
 export default function App() {
   const [opened, setOpened] = useState(false)
   const [openingVisible, setOpeningVisible] = useState(true)
+  const [isPreparing, setIsPreparing] = useState(false)
+  const [openingError, setOpeningError] = useState('')
   const guest = useGuestName()
   const music = useSoundCloud(invitation.music.trackUrl)
 
@@ -21,13 +23,26 @@ export default function App() {
     }
   }, [openingVisible])
 
-  const openInvitation = () => {
-    if (opened) return
+  const openInvitation = async () => {
+    if (opened || isPreparing) return
     music.play()
-    setOpened(true)
+    setIsPreparing(true)
+    setOpeningError('')
 
-    const minimumTransition = new Promise<void>((resolve) => window.setTimeout(resolve, 800))
-    void Promise.all([loadInvitationContent(), minimumTransition]).then(() => {
+    try {
+      await loadInvitationContent()
+    } catch {
+      music.pause()
+      setIsPreparing(false)
+      setOpeningError('The invitation could not be prepared just now. Please try opening it again.')
+      return
+    }
+
+    setOpened(true)
+    setIsPreparing(false)
+
+    const transitionDuration = window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 20 : 800
+    window.setTimeout(() => {
       setOpeningVisible(false)
 
       let attempts = 0
@@ -37,7 +52,7 @@ export default function App() {
         else if (attempts++ < 20) window.setTimeout(focusInvitation, 50)
       }
       window.setTimeout(focusInvitation, 0)
-    })
+    }, transitionDuration)
   }
 
   return (
@@ -47,7 +62,8 @@ export default function App() {
           guestName={guest.name}
           isPersonalized={guest.isPersonalized}
           isClosing={opened}
-          isMusicPreparing={music.status === 'loading'}
+          isPreparing={isPreparing}
+          error={openingError}
           onOpen={openInvitation}
         />
       )}

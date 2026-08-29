@@ -54,6 +54,12 @@
 
   .button-primary {
     @apply inline-flex min-h-12 items-center justify-center gap-3 border border-gold bg-gold px-7 py-3.5 text-[10px] font-medium uppercase tracking-[0.2em] text-white shadow-sm transition duration-300 hover:-translate-y-0.5 hover:bg-[#7d5525] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gold disabled:cursor-wait disabled:opacity-60;
+    background-image: linear-gradient(115deg, #76501f 0%, #91652c 48%, #845923 100%);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.16), 0 10px 24px rgba(70, 48, 27, 0.14);
+  }
+
+  .button-primary:hover {
+    background-image: linear-gradient(115deg, #6f491f 0%, #7d5525 48%, #76501f 100%);
   }
 
   .button-outline {
@@ -95,6 +101,192 @@
   }
 }
 
+.paper-field {
+  background-image:
+    radial-gradient(circle at 14% 18%, rgba(178, 138, 75, 0.055), transparent 24%),
+    radial-gradient(circle at 84% 78%, rgba(96, 65, 37, 0.04), transparent 28%),
+    repeating-linear-gradient(105deg, rgba(70, 58, 50, 0.012) 0 1px, transparent 1px 6px);
+}
+
+.royal-damask {
+  background-image:
+    radial-gradient(circle, rgba(216, 189, 139, 0.24) 0 1px, transparent 1.5px),
+    linear-gradient(45deg, transparent 48.8%, rgba(216, 189, 139, 0.08) 49.5% 50.5%, transparent 51.2%),
+    linear-gradient(-45deg, transparent 48.8%, rgba(216, 189, 139, 0.08) 49.5% 50.5%, transparent 51.2%);
+  background-position: 0 0, 0 0, 0 0;
+  background-size: 56px 56px;
+}
+
+.opening-card {
+  background: linear-gradient(145deg, rgba(45, 36, 31, 0.78), rgba(29, 23, 19, 0.62));
+  box-shadow: 0 30px 100px rgba(0, 0, 0, 0.32), inset 0 0 70px rgba(216, 189, 139, 0.035);
+  backdrop-filter: blur(5px);
+}
+
+.opening-card::before {
+  position: absolute;
+  inset: 0;
+  content: '';
+  pointer-events: none;
+  background: linear-gradient(105deg, transparent 35%, rgba(255, 244, 216, 0.08) 49%, transparent 63%);
+  transform: translateX(-125%);
+  animation: gilded-glint 1.8s 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.opening-photo {
+  animation: opening-drift 12s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.arched-portrait,
+.arched-portrait__keyline {
+  border-radius: 50% 50% 0 0 / 27% 27% 0 0;
+}
+
+.arched-portrait {
+  box-shadow:
+    0 34px 85px rgba(56, 43, 31, 0.18),
+    0 0 0 1px rgba(145, 101, 44, 0.38),
+    0 0 0 7px rgba(216, 189, 139, 0.08);
+}
+
+.royal-seal {
+  box-shadow:
+    0 16px 45px rgba(45, 36, 31, 0.24),
+    inset 0 0 0 1px rgba(216, 189, 139, 0.22),
+    inset 0 0 24px rgba(216, 189, 139, 0.05);
+}
+
+.royal-seal::before {
+  position: absolute;
+  inset: 6px;
+  border: 1px solid rgba(216, 189, 139, 0.42);
+  border-radius: 9999px;
+  content: '';
+}
+
+.royal-seal::after {
+  position: absolute;
+  left: 50%;
+  top: 7px;
+  color: rgba(216, 189, 139, 0.75);
+  content: '✦';
+  font-size: 7px;
+  transform: translateX(-50%);
+}
+
+.engraved-card::after {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  content: '';
+  pointer-events: none;
+  background: linear-gradient(112deg, transparent 32%, rgba(255, 255, 255, 0.45) 49%, transparent 66%);
+  opacity: 0.25;
+}
+
+.engraved-corner {
+  position: absolute;
+  z-index: 2;
+  width: 34px;
+  height: 34px;
+  color: rgba(216, 189, 139, 0.6);
+  pointer-events: none;
+}
+
+.engraved-corner::before,
+.engraved-corner::after {
+  position: absolute;
+  content: '';
+}
+
+.engraved-corner::before {
+  inset: 0;
+  border-left: 1px solid currentColor;
+  border-top: 1px solid currentColor;
+}
+
+.engraved-corner::after {
+  left: 7px;
+  top: 7px;
+  width: 14px;
+  height: 14px;
+  border-left: 1px solid currentColor;
+  border-top: 1px solid currentColor;
+}
+
+.engraved-corner--tl { left: 14px; top: 14px; }
+.engraved-corner--tr { right: 14px; top: 14px; transform: scaleX(-1); }
+.engraved-corner--bl { bottom: 14px; left: 14px; transform: scaleY(-1); }
+.engraved-corner--br { right: 14px; bottom: 14px; transform: scale(-1); }
+
+.story-medallion {
+  box-shadow: 0 0 0 5px #f7f3eb, 0 0 0 6px rgba(145, 101, 44, 0.16);
+}
+
+.story-medallion::after {
+  position: absolute;
+  inset: 4px;
+  border: 1px solid rgba(145, 101, 44, 0.18);
+  border-radius: 9999px;
+  content: '';
+}
+
+.countdown-frame {
+  box-shadow: inset 0 0 0 1px rgba(251, 248, 242, 0.07), 0 26px 80px rgba(0, 0, 0, 0.16);
+}
+
+.countdown-panel {
+  transition: background-color 450ms ease;
+}
+
+.countdown-panel:hover {
+  background-color: rgba(251, 248, 242, 0.05);
+}
+
+.royal-interlude::before,
+.royal-interlude::after {
+  position: absolute;
+  left: 50%;
+  z-index: 1;
+  width: min(280px, 48vw);
+  height: 1px;
+  content: '';
+  background: linear-gradient(90deg, transparent, rgba(216, 189, 139, 0.7), transparent);
+  transform: translateX(-50%);
+}
+
+.royal-interlude::before { top: 0; }
+.royal-interlude::after { bottom: 0; }
+
+.gilded-motes {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.gilded-mote {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  border-radius: 9999px;
+  background: #d8bd8b;
+  box-shadow: 0 0 10px rgba(216, 189, 139, 0.65);
+  opacity: 0;
+  animation: gilded-rise 7s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.gilded-mote:nth-child(1) { left: 8%; top: 76%; animation-delay: 0.2s; }
+.gilded-mote:nth-child(2) { left: 18%; top: 28%; width: 2px; height: 2px; animation-delay: 1.3s; }
+.gilded-mote:nth-child(3) { left: 31%; top: 86%; animation-delay: 2.1s; }
+.gilded-mote:nth-child(4) { left: 42%; top: 18%; width: 2px; height: 2px; animation-delay: 0.8s; }
+.gilded-mote:nth-child(5) { left: 53%; top: 70%; animation-delay: 1.7s; }
+.gilded-mote:nth-child(6) { left: 63%; top: 35%; width: 2px; height: 2px; animation-delay: 2.5s; }
+.gilded-mote:nth-child(7) { left: 74%; top: 83%; animation-delay: 0.4s; }
+.gilded-mote:nth-child(8) { left: 86%; top: 25%; animation-delay: 1.1s; }
+.gilded-mote:nth-child(9) { left: 92%; top: 64%; width: 2px; height: 2px; animation-delay: 2.8s; }
+.gilded-mote:nth-child(10) { left: 12%; top: 48%; width: 2px; height: 2px; animation-delay: 3.2s; }
+
 .writing-vertical {
   writing-mode: vertical-rl;
 }
@@ -131,6 +323,22 @@
   75% { transform: rotate(-2deg); }
 }
 
+@keyframes gilded-rise {
+  0% { opacity: 0; transform: translate3d(0, 16px, 0) scale(0.6); }
+  25% { opacity: 0.55; }
+  100% { opacity: 0.12; transform: translate3d(6px, -34px, 0) scale(1.1); }
+}
+
+@keyframes gilded-glint {
+  0% { transform: translateX(-125%); }
+  100% { transform: translateX(125%); }
+}
+
+@keyframes opening-drift {
+  0% { transform: scale(1.1); }
+  100% { transform: scale(1.145); }
+}
+
 .animate-music-pulse {
   animation: music-pulse 1.8s ease-out infinite;
 }
@@ -141,6 +349,20 @@
 
 .animate-monogram-sway {
   animation: monogram-sway 8s ease-in-out infinite;
+}
+
+@media (max-height: 720px) {
+  .opening-screen {
+    place-items: start center;
+  }
+
+  .opening-card {
+    margin-block: auto;
+  }
+
+  .opening-card > .opening-crest {
+    height: 5.75rem;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

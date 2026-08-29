@@ -1,8 +1,9 @@
 import { AnimatePresence, motion } from 'framer-motion'
 import { Check, Heart, Send } from 'lucide-react'
-import { type FormEvent, useState } from 'react'
+import { type FormEvent, useEffect, useRef, useState } from 'react'
 import { invitation } from '../data/invitation'
 import { submitRsvp } from '../services/rsvp'
+import { RoyalCrest } from './RoyalOrnaments'
 import { SectionHeading } from './SectionHeading'
 
 type RsvpSectionProps = {
@@ -15,6 +16,11 @@ export function RsvpSection({ guestName, isPersonalized }: RsvpSectionProps) {
   const [submitting, setSubmitting] = useState(false)
   const [attendance, setAttendance] = useState<'yes' | 'no'>('yes')
   const [error, setError] = useState('')
+  const successHeadingRef = useRef<HTMLHeadingElement>(null)
+
+  useEffect(() => {
+    if (submitted) successHeadingRef.current?.focus()
+  }, [submitted])
 
   const onSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
@@ -44,6 +50,8 @@ export function RsvpSection({ guestName, isPersonalized }: RsvpSectionProps) {
   return (
     <section id="rsvp" className="relative isolate overflow-hidden bg-espresso px-5 py-24 text-linen sm:px-8 sm:py-32">
       <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_15%_10%,rgba(216,189,139,.12),transparent_30%),radial-gradient(circle_at_85%_80%,rgba(216,189,139,.08),transparent_28%)]" />
+      <div className="royal-damask absolute inset-0 -z-10 opacity-10" aria-hidden="true" />
+      <RoyalCrest className="absolute -bottom-28 -right-28 -z-10 h-[430px] w-[490px] text-champagne/[0.035]" />
       <SectionHeading
         eyebrow="Kindly reply"
         title="Will you join us?"
@@ -52,12 +60,17 @@ export function RsvpSection({ guestName, isPersonalized }: RsvpSectionProps) {
       />
 
       <motion.div
-        className="mx-auto mt-14 max-w-3xl border border-champagne/25 bg-linen/[0.045] p-6 backdrop-blur-sm sm:p-10 lg:p-12"
+        className="relative mx-auto mt-14 max-w-3xl overflow-hidden border border-champagne/30 bg-linen/[0.045] p-6 backdrop-blur-sm sm:p-10 lg:p-12"
         initial={{ opacity: 0, y: 28 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.18 }}
         transition={{ duration: 0.8 }}
       >
+        <div className="pointer-events-none absolute inset-2 border border-linen/10" aria-hidden="true" />
+        <span className="engraved-corner engraved-corner--tl" aria-hidden="true" />
+        <span className="engraved-corner engraved-corner--tr" aria-hidden="true" />
+        <span className="engraved-corner engraved-corner--bl" aria-hidden="true" />
+        <span className="engraved-corner engraved-corner--br" aria-hidden="true" />
         <AnimatePresence mode="wait">
           {submitted ? (
             <motion.div
@@ -71,7 +84,13 @@ export function RsvpSection({ guestName, isPersonalized }: RsvpSectionProps) {
                 <div className="mx-auto grid h-20 w-20 place-items-center rounded-full border border-champagne/50 text-champagne">
                   <Check className="h-8 w-8" strokeWidth={1.2} aria-hidden="true" />
                 </div>
-                <h3 className="mt-7 font-display text-4xl text-linen sm:text-5xl">Thank you</h3>
+                <h3
+                  ref={successHeadingRef}
+                  className="mt-7 font-display text-4xl text-linen outline-none sm:text-5xl"
+                  tabIndex={-1}
+                >
+                  Thank you
+                </h3>
                 <p className="mx-auto mt-4 max-w-md text-sm font-light leading-7 text-linen/70">
                   {attendance === 'yes'
                     ? 'Your reply has been received in this preview. We cannot wait to celebrate this beautiful day with you.'

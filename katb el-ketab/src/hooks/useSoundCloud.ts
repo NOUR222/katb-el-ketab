@@ -73,5 +73,5 @@ export function useSoundCloud(trackUrl: string) {
     else play()
   }, [pause, play, status, trackUrl])
 
-  return { iframeRef, status, play, toggle }
+  return { iframeRef, status, play, pause, toggle }
 }

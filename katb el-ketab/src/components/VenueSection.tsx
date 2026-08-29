@@ -2,11 +2,13 @@ import { motion } from 'framer-motion'
 import { ExternalLink, MapPin } from 'lucide-react'
 import { invitation } from '../data/invitation'
 import { BotanicalMark } from './BotanicalMark'
+import { OrnamentalDivider, RoyalCrest } from './RoyalOrnaments'
 
 export function VenueSection() {
   return (
     <section id="venue" className="relative overflow-hidden bg-linen px-5 py-24 sm:px-8 sm:py-32 lg:px-14">
-      <div className="mx-auto grid max-w-6xl items-center gap-14 lg:grid-cols-[1.05fr_.95fr] lg:gap-20">
+      <div className="paper-field pointer-events-none absolute inset-0" aria-hidden="true" />
+      <div className="relative mx-auto grid max-w-6xl items-center gap-14 lg:grid-cols-[1.05fr_.95fr] lg:gap-20">
         <motion.div
           className="relative mx-auto w-full max-w-[560px]"
           initial={{ opacity: 0, x: -24 }}
@@ -27,6 +29,7 @@ export function VenueSection() {
               loading="lazy"
             />
             <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(247,243,235,.04),rgba(84,57,35,.18))]" />
+            <div className="absolute inset-2 border border-champagne/65" aria-hidden="true" />
           </div>
           <div className="absolute -bottom-8 left-5 bg-espresso px-6 py-4 text-linen shadow-float sm:left-8 sm:px-8">
             <p className="eyebrow text-champagne">Alexandria</p>
@@ -35,14 +38,16 @@ export function VenueSection() {
         </motion.div>
 
         <motion.div
-          className="relative text-center lg:text-left"
+          className="relative isolate text-center lg:text-left"
           initial={{ opacity: 0, x: 24 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.85, delay: 0.08, ease: [0.22, 1, 0.36, 1] }}
         >
           <BotanicalMark className="absolute -right-20 -top-20 hidden h-52 text-gold/12 lg:block" mirrored />
+          <RoyalCrest className="absolute -right-28 bottom-[-7rem] -z-10 hidden h-72 w-80 text-gold/[0.05] lg:block" />
           <p className="eyebrow text-gold">The venue</p>
+          <OrnamentalDivider className="mx-auto mt-4 h-6 w-40 text-gold/65 lg:mx-0" />
           <h2 className="mt-5 font-display text-5xl font-medium leading-[0.94] text-espresso sm:text-6xl lg:text-7xl">
             Al Mowasah<br />Open Air
           </h2>

@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion'
+import { OrnamentalDivider } from './RoyalOrnaments'
 
 type SectionHeadingProps = {
   eyebrow: string
@@ -24,8 +25,11 @@ export function SectionHeading({
       transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
     >
       <p className={`eyebrow ${inverted ? 'text-champagne' : 'text-gold'}`}>{eyebrow}</p>
+      <OrnamentalDivider
+        className={`mx-auto mt-4 h-6 w-36 sm:w-44 ${inverted ? 'text-champagne/65' : 'text-gold/65'}`}
+      />
       <h2
-        className={`mt-5 font-display text-5xl font-medium leading-[0.95] sm:text-6xl lg:text-7xl ${
+        className={`mt-4 font-display text-5xl font-medium leading-[0.95] sm:text-6xl lg:text-7xl ${
           inverted ? 'text-linen' : 'text-espresso'
         }`}
       >

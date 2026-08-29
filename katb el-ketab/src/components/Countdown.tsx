@@ -1,4 +1,4 @@
-import { AnimatePresence, motion } from 'framer-motion'
+import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
 import { useEffect, useMemo, useState } from 'react'
 import { invitation } from '../data/invitation'
 import { SectionHeading } from './SectionHeading'
@@ -29,16 +29,17 @@ function calculateTimeLeft(target: number): TimeLeft {
 
 function CountdownValue({ value }: { value: number }) {
   const formatted = String(value).padStart(2, '0')
+  const reduceMotion = useReducedMotion()
   return (
     <div className="relative h-[1.05em] overflow-hidden font-display text-5xl leading-none text-linen sm:text-6xl lg:text-7xl">
       <AnimatePresence mode="popLayout" initial={false}>
         <motion.span
           key={formatted}
           className="absolute inset-0 grid place-items-center"
-          initial={{ y: '55%', opacity: 0, filter: 'blur(5px)' }}
+          initial={reduceMotion ? false : { y: '55%', opacity: 0, filter: 'blur(5px)' }}
           animate={{ y: 0, opacity: 1, filter: 'blur(0px)' }}
-          exit={{ y: '-55%', opacity: 0, filter: 'blur(5px)' }}
-          transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+          exit={reduceMotion ? undefined : { y: '-55%', opacity: 0, filter: 'blur(5px)' }}
+          transition={{ duration: reduceMotion ? 0 : 0.45, ease: [0.22, 1, 0.36, 1] }}
         >
           {formatted}
         </motion.span>
@@ -70,6 +71,7 @@ export function Countdown() {
         />
       </div>
       <div className="absolute inset-0 -z-10 bg-espresso/90" />
+      <div className="royal-damask absolute inset-0 -z-10 opacity-10" aria-hidden="true" />
       <div className="absolute left-1/2 top-0 h-px w-32 -translate-x-1/2 bg-champagne" />
 
       <SectionHeading
@@ -81,7 +83,7 @@ export function Countdown() {
 
       <div className="sr-only" role="timer" aria-live="off" aria-label={`Time remaining: ${spokenTime}`} />
       <motion.div
-        className="mx-auto mt-14 grid max-w-5xl grid-cols-2 border border-linen/15 sm:grid-cols-4"
+        className="countdown-frame relative mx-auto mt-14 grid max-w-5xl grid-cols-2 border border-champagne/30 p-2 sm:grid-cols-4"
         initial={{ opacity: 0, y: 24 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.35 }}
@@ -91,12 +93,13 @@ export function Countdown() {
         {units.map(({ key, label }, index) => (
           <div
             key={key}
-            className={`relative px-3 py-8 text-center sm:py-10 ${
+            className={`countdown-panel relative bg-linen/[0.025] px-3 py-9 text-center sm:py-11 ${
               index % 2 === 1 ? 'border-l border-linen/15' : ''
             } ${index >= 2 ? 'border-t border-linen/15 sm:border-t-0' : ''} ${
               index > 0 ? 'sm:border-l sm:border-linen/15' : ''
             }`}
           >
+            <span className="absolute left-1/2 top-4 h-1.5 w-1.5 -translate-x-1/2 rotate-45 border border-champagne/45" aria-hidden="true" />
             <CountdownValue value={timeLeft[key]} />
             <p className="mt-3 text-[9px] uppercase tracking-[0.28em] text-champagne/75">{label}</p>
           </div>
