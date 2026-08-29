@@ -88,12 +88,16 @@ export function Gallery() {
           subtitle="A little window into our world — and the beautiful place where we will celebrate together."
         />
 
-        <div className="mx-auto mt-14 grid max-w-6xl gap-5 sm:grid-cols-2 sm:gap-7">
+        <div className="mx-auto mt-14 grid max-w-6xl gap-5 sm:grid-cols-2 sm:gap-7 lg:grid-cols-3">
           {galleryItems.map((item, index) => (
             <motion.button
               type="button"
               className={`group relative overflow-hidden bg-parchment text-left shadow-editorial focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gold ${
-                index === 0 ? 'aspect-[4/5] sm:mt-14' : 'aspect-[4/5]'
+                index === 0
+                  ? 'aspect-[4/5] sm:mt-14'
+                  : index === 2
+                    ? 'aspect-[4/5] sm:col-span-2 sm:aspect-[16/10] lg:col-span-1 lg:mt-14 lg:aspect-[4/5]'
+                    : 'aspect-[4/5]'
               }`}
               key={item.src}
               onClick={(event) => open(index, event.currentTarget)}
@@ -106,12 +110,18 @@ export function Gallery() {
               <img
                 src={item.src}
                 srcSet={item.srcSet}
-                sizes="(min-width: 640px) 45vw, 92vw"
+                sizes={index === 2
+                  ? '(min-width: 1024px) 30vw, (min-width: 640px) 90vw, 92vw'
+                  : '(min-width: 1024px) 30vw, (min-width: 640px) 45vw, 92vw'}
                 width={item.width}
                 height={item.height}
                 alt={item.alt}
                 className={`h-full w-full object-cover transition duration-700 group-hover:scale-[1.035] ${
-                  index === 0 ? 'object-[62%_44%]' : 'object-[50%_30%] saturate-[0.88]'
+                  index === 0
+                    ? 'object-[62%_44%]'
+                    : index === 1
+                      ? 'object-[50%_42%] saturate-[0.92]'
+                      : 'object-[50%_40%] saturate-[0.92]'
                 }`}
                 loading="lazy"
               />

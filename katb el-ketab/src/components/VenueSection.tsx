@@ -10,18 +10,18 @@ export function VenueSection() {
       <div className="paper-field pointer-events-none absolute inset-0" aria-hidden="true" />
       <div className="relative mx-auto grid max-w-6xl items-center gap-14 lg:grid-cols-[1.05fr_.95fr] lg:gap-20">
         <motion.div
-          className="relative mx-auto w-full max-w-[560px]"
+          className="relative mx-auto w-full max-w-[600px] pb-16 sm:pb-20"
           initial={{ opacity: 0, x: -24 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true, amount: 0.25 }}
           transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1] }}
         >
-          <div className="absolute -bottom-5 -right-4 h-full w-[88%] border border-gold/35 sm:-right-7" />
-          <div className="relative aspect-[4/5] overflow-hidden bg-parchment shadow-editorial">
+          <div className="absolute left-4 top-5 h-[calc(100%-5rem)] w-[82%] border border-gold/35 sm:left-7" aria-hidden="true" />
+          <div className="relative aspect-[4/5] w-[84%] overflow-hidden bg-parchment shadow-editorial">
             <img
               src={invitation.images.venue.src}
               srcSet={invitation.images.venue.srcSet}
-              sizes="(min-width: 1024px) 44vw, 90vw"
+              sizes="(min-width: 1024px) 38vw, 76vw"
               width={invitation.images.venue.width}
               height={invitation.images.venue.height}
               alt={invitation.images.venue.alt}
@@ -31,9 +31,24 @@ export function VenueSection() {
             <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(247,243,235,.04),rgba(84,57,35,.18))]" />
             <div className="absolute inset-2 border border-champagne/65" aria-hidden="true" />
           </div>
-          <div className="absolute -bottom-8 left-5 bg-espresso px-6 py-4 text-linen shadow-float sm:left-8 sm:px-8">
+
+          <div className="absolute bottom-0 right-0 aspect-[3/4] w-[43%] overflow-hidden border-[5px] border-linen bg-parchment shadow-editorial sm:border-[7px]">
+            <img
+              src={invitation.images.venueAisle.src}
+              srcSet={invitation.images.venueAisle.srcSet}
+              sizes="(min-width: 1024px) 20vw, 40vw"
+              width={invitation.images.venueAisle.width}
+              height={invitation.images.venueAisle.height}
+              alt={invitation.images.venueAisle.alt}
+              className="h-full w-full object-cover object-[50%_42%] saturate-[0.9]"
+              loading="lazy"
+            />
+            <div className="absolute inset-1.5 border border-champagne/60" aria-hidden="true" />
+          </div>
+
+          <div className="absolute bottom-3 left-0 bg-espresso px-4 py-3 text-linen shadow-float sm:left-5 sm:px-6 sm:py-4">
             <p className="eyebrow text-champagne">Alexandria</p>
-            <p className="mt-1 font-display text-2xl">Open air · 7:00 PM</p>
+            <p className="mt-1 font-display text-xl sm:text-2xl">Open air · 7:00 PM</p>
           </div>
         </motion.div>
 

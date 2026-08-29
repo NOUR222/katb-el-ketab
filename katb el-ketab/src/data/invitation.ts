@@ -31,11 +31,18 @@ export const invitation = {
       height: 1280,
     },
     venue: {
-      src: '/images/venue-960.webp',
-      srcSet: '/images/venue-640.webp 640w, /images/venue-960.webp 960w',
-      alt: 'The open-air lawn at Al Mowasah with white seating and a ceremony canopy',
+      src: '/images/venue-ceremony-960.webp',
+      srcSet: '/images/venue-ceremony-640.webp 640w, /images/venue-ceremony-960.webp 960w',
+      alt: 'The decorated open-air ceremony at Al Mowasah with white draping, floral arrangements, and guest seating',
       width: 960,
-      height: 1280,
+      height: 1282,
+    },
+    venueAisle: {
+      src: '/images/venue-aisle-960.webp',
+      srcSet: '/images/venue-aisle-640.webp 640w, /images/venue-aisle-960.webp 960w',
+      alt: 'The flower-lined white aisle leading to the decorated Katb El-Ketab ceremony table at Al Mowasah',
+      width: 960,
+      height: 1270,
     },
   },
 } as const
@@ -70,5 +77,6 @@ export type GalleryItem = {
 
 export const galleryItems: GalleryItem[] = [
   { ...invitation.images.couple, caption: 'Us, exactly as we are' },
-  { ...invitation.images.venue, caption: 'Where we begin forever' },
+  { ...invitation.images.venue, caption: 'Where our forever begins' },
+  { ...invitation.images.venueAisle, caption: 'The aisle to our next chapter' },
 ]
