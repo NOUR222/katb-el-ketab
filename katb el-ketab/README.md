@@ -38,4 +38,4 @@ The form currently logs a typed submission object in the browser console. Replac
 
 ## Music
 
-The invitation uses the first 30 seconds of the local song in `public/audio/invitation-song.mp3`. Playback starts after the visitor presses **Open our story**, and the floating control can pause, resume, or replay the clip.
+The invitation uses the first 30 seconds of the local song in `public/audio/invitation-song.mp3`. Playback starts after the visitor presses **Open our story**, loops until paused or the page is closed, and can be controlled with the floating music button.

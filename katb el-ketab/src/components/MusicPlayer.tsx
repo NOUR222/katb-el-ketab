@@ -27,6 +27,7 @@ export function MusicPlayer({ audioRef, status, src, visible, onToggle }: MusicP
         className="pointer-events-none fixed -left-10 -top-10 h-px w-px opacity-0"
         src={src}
         preload="auto"
+        loop
         tabIndex={-1}
         aria-hidden="true"
       />
