@@ -4,6 +4,7 @@ import { useRef } from 'react'
 import { invitation } from '../data/invitation'
 import { BotanicalMark } from './BotanicalMark'
 import { MagicTrail, PalaceSilhouette, TiaraMark } from './FairytaleOrnaments'
+import { StarlightField } from './RoyalOrnaments'
 
 const ceremonyDate = new Date(invitation.event.isoDate)
 const ceremonyDay = new Intl.DateTimeFormat('en-GB', {
@@ -37,6 +38,7 @@ export function HeroSection({ guestName, isPersonalized }: HeroSectionProps) {
     >
       <div className="paper-field absolute inset-0 -z-20" aria-hidden="true" />
       <PalaceSilhouette className="pointer-events-none absolute -bottom-2 left-1/2 -z-10 h-40 w-[125%] -translate-x-1/2 text-gold/[0.075] sm:h-52 lg:h-60" />
+      <StarlightField className="z-0 text-gold/40" />
       <nav
         className="absolute inset-x-0 top-0 z-20 mx-auto flex max-w-[1440px] items-center justify-between px-5 pb-5 pt-[max(1.5rem,env(safe-area-inset-top))] sm:px-8 lg:px-14"
         aria-label="Invitation navigation"

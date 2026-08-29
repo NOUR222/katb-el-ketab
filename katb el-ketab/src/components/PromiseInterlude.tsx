@@ -2,7 +2,7 @@ import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
 import { invitation } from '../data/invitation'
 import { MagicTrail, PalaceSilhouette, TiaraMark } from './FairytaleOrnaments'
-import { GildedMotes, OrnamentalDivider } from './RoyalOrnaments'
+import { GildedMotes, OrnamentalDivider, StarlightField } from './RoyalOrnaments'
 
 export function PromiseInterlude() {
   const sectionRef = useRef<HTMLElement>(null)
@@ -17,9 +17,10 @@ export function PromiseInterlude() {
         <MagicTrail className="pointer-events-none absolute -left-20 top-5 z-0 h-48 w-80 -scale-x-100 text-champagne/30" />
       )}
       <GildedMotes />
+      <StarlightField className="z-0 text-champagne/70" />
 
       <motion.div
-        className="relative mx-auto max-w-4xl px-6 py-12 text-center sm:px-14 sm:py-16"
+        className="relative z-10 mx-auto max-w-4xl px-6 py-12 text-center sm:px-14 sm:py-16"
         initial={{ opacity: 0, scale: 0.975 }}
         whileInView={{ opacity: 1, scale: 1 }}
         viewport={{ once: true, amount: 0.35 }}

@@ -4,6 +4,25 @@ type OrnamentProps = {
   className?: string
 }
 
+const starlights = [
+  { left: '6%', top: '12%', size: 11, duration: 7.4, delay: -1.2, glint: true },
+  { left: '15%', top: '31%', size: 2, duration: 6.3, delay: -4.1 },
+  { left: '9%', top: '62%', size: 3, duration: 8.8, delay: -2.7 },
+  { left: '23%', top: '82%', size: 2, duration: 7.1, delay: -5.3 },
+  { left: '31%', top: '14%', size: 8, duration: 9.2, delay: -3.8, glint: true },
+  { left: '43%', top: '7%', size: 2, duration: 6.8, delay: -1.9 },
+  { left: '66%', top: '9%', size: 3, duration: 8.1, delay: -6.2 },
+  { left: '79%', top: '21%', size: 2, duration: 5.9, delay: -3.2 },
+  { left: '93%', top: '12%', size: 12, duration: 8.6, delay: -5.8, glint: true },
+  { left: '88%', top: '37%', size: 3, duration: 7.7, delay: -2.2 },
+  { left: '95%', top: '64%', size: 2, duration: 6.5, delay: -4.9 },
+  { left: '83%', top: '84%', size: 3, duration: 9.5, delay: -6.7 },
+  { left: '69%', top: '75%', size: 9, duration: 7.9, delay: -2.8, glint: true },
+  { left: '55%', top: '92%', size: 2, duration: 6.1, delay: -4.4 },
+  { left: '34%', top: '90%', size: 3, duration: 8.4, delay: -1.6 },
+  { left: '5%', top: '88%', size: 8, duration: 9, delay: -5.5, glint: true },
+] as const
+
 export function RoyalCrest({ className = '' }: OrnamentProps) {
   const groomInitial = invitation.couple.shortGroom.charAt(0)
   const brideInitial = invitation.couple.shortBride.charAt(0)
@@ -104,6 +123,28 @@ export function GildedMotes({ className = '' }: OrnamentProps) {
   return (
     <div className={`gilded-motes ${className}`} aria-hidden="true">
       {Array.from({ length: 10 }, (_, index) => <span className="gilded-mote" key={index} />)}
+    </div>
+  )
+}
+
+export function StarlightField({ className = '' }: OrnamentProps) {
+  return (
+    <div className={`starlight-field ${className}`} aria-hidden="true">
+      {starlights.map((star, index) => (
+        <span
+          className={`starlight ${'glint' in star && star.glint ? 'starlight--glint' : 'starlight--mote'}`}
+          key={`${star.left}-${star.top}`}
+          style={{
+            left: star.left,
+            top: star.top,
+            width: star.size,
+            height: star.size,
+            animationDuration: `${star.duration}s`,
+            animationDelay: `${star.delay}s`,
+          }}
+          data-star={index + 1}
+        />
+      ))}
     </div>
   )
 }
