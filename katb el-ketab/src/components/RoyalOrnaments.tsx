@@ -4,6 +4,10 @@ type OrnamentProps = {
   className?: string
 }
 
+type StarlightFieldProps = OrnamentProps & {
+  density?: 'full' | 'sparse'
+}
+
 const starlights = [
   { left: '6%', top: '12%', size: 11, duration: 7.4, delay: -1.2, glint: true },
   { left: '15%', top: '31%', size: 2, duration: 6.3, delay: -4.1 },
@@ -127,10 +131,11 @@ export function GildedMotes({ className = '' }: OrnamentProps) {
   )
 }
 
-export function StarlightField({ className = '' }: OrnamentProps) {
+export function StarlightField({ className = '', density = 'full' }: StarlightFieldProps) {
   return (
-    <div className={`starlight-field ${className}`} aria-hidden="true">
+    <div className={`starlight-field starlight-field--${density} ${className}`} aria-hidden="true">
       {starlights.map((star, index) => (
+        density === 'sparse' && index % 2 === 1 ? null :
         <span
           className={`starlight ${'glint' in star && star.glint ? 'starlight--glint' : 'starlight--mote'}`}
           key={`${star.left}-${star.top}`}

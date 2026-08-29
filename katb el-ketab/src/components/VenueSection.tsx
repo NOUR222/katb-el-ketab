@@ -61,13 +61,13 @@ export function VenueSection() {
         >
           <BotanicalMark className="absolute -right-20 -top-20 hidden h-52 text-gold/12 lg:block" mirrored />
           <RoyalCrest className="absolute -right-28 bottom-[-7rem] -z-10 hidden h-72 w-80 text-gold/[0.05] lg:block" />
-          <p className="eyebrow text-gold">The venue</p>
+          <p className="eyebrow text-gold">Chapter III · Where we gather</p>
           <OrnamentalDivider className="mx-auto mt-4 h-6 w-40 text-gold/65 lg:mx-0" />
           <h2 className="mt-5 font-display text-5xl font-medium leading-[0.94] text-espresso sm:text-6xl lg:text-7xl">
             Al Mowasah<br />Open Air
           </h2>
           <p className="mx-auto mt-7 max-w-lg text-sm font-light leading-7 text-ink/80 lg:mx-0">
-            Beneath the open sky, surrounded by the people we cherish most — this is where our next chapter begins.
+            At Al Mowasah Open Air, beneath Alexandria’s evening sky, we will make our promise surrounded by the people who shaped our story.
           </p>
 
           <div className="mx-auto mt-8 flex max-w-md items-start justify-center gap-4 border-y border-espresso/10 py-6 text-left lg:mx-0 lg:justify-start">

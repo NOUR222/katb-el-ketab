@@ -14,10 +14,12 @@ export function PromiseInterlude() {
       <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_50%_42%,rgba(216,189,139,.14),transparent_36%)]" aria-hidden="true" />
       <PalaceSilhouette className="pointer-events-none absolute -bottom-1 left-1/2 -z-10 h-48 w-[130%] -translate-x-1/2 text-champagne/25 sm:h-64" />
       {isInView && (
-        <MagicTrail className="pointer-events-none absolute -left-20 top-5 z-0 h-48 w-80 -scale-x-100 text-champagne/30" />
+        <>
+          <MagicTrail className="pointer-events-none absolute -left-20 top-5 z-0 h-48 w-80 -scale-x-100 text-champagne/30" />
+          <GildedMotes />
+          <StarlightField className="z-0 text-champagne/70" density="sparse" />
+        </>
       )}
-      <GildedMotes />
-      <StarlightField className="z-0 text-champagne/70" />
 
       <motion.div
         className="relative z-10 mx-auto max-w-4xl px-6 py-12 text-center sm:px-14 sm:py-16"
@@ -34,16 +36,16 @@ export function PromiseInterlude() {
         <span className="engraved-corner engraved-corner--br" aria-hidden="true" />
 
         <TiaraMark className="mx-auto h-16 w-40 text-champagne sm:h-20 sm:w-48" />
-        <p className="eyebrow mt-5 text-champagne">A promise from {invitation.couple.shortGroom}</p>
-        <h2 className="mx-auto mt-5 max-w-3xl font-display text-5xl font-medium leading-[0.94] text-linen sm:text-6xl lg:text-7xl">
-          {invitation.couple.shortBride}, you are the grace at the heart of our story.
+        <p className="eyebrow mt-5 text-champagne">A page for {invitation.couple.shortBride}</p>
+        <h2 className="mx-auto mt-5 max-w-3xl font-display text-4xl font-medium leading-[1] text-linen sm:text-5xl lg:text-6xl">
+          {invitation.couple.shortBride}, every page ahead feels brighter because we will write it together.
         </h2>
         <OrnamentalDivider className="mx-auto mt-8 h-8 w-52 text-champagne/70 sm:w-64" />
         <p className="mx-auto mt-6 max-w-2xl font-display text-2xl italic leading-relaxed text-linen/75 sm:text-3xl">
-          May every chapter we share remind you how deeply you are cherished.
+          I promise to honour your heart, protect your joy, and make our life together worthy of the love you have given me.
         </p>
         <p className="mt-7 text-[10px] uppercase tracking-[0.28em] text-champagne/80">
-          Always yours <span className="px-2 font-display text-base italic">·</span> {invitation.couple.shortGroom}
+          With all my heart <span className="px-2 font-display text-base italic">·</span> {invitation.couple.shortGroom}
         </p>
       </motion.div>
     </section>

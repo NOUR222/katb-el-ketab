@@ -1,5 +1,5 @@
 import { AnimatePresence, motion } from 'framer-motion'
-import { Check, Heart, Send } from 'lucide-react'
+import { Check, Heart, ScrollText } from 'lucide-react'
 import { type FormEvent, useEffect, useRef, useState } from 'react'
 import { invitation } from '../data/invitation'
 import { submitRsvp } from '../services/rsvp'
@@ -41,7 +41,7 @@ export function RsvpSection({ guestName, isPersonalized }: RsvpSectionProps) {
       setSubmitted(true)
       form.reset()
     } catch {
-      setError('We could not send your reply. Please try again.')
+      setError('We could not prepare your reply. Please try again.')
     } finally {
       setSubmitting(false)
     }
@@ -53,9 +53,9 @@ export function RsvpSection({ guestName, isPersonalized }: RsvpSectionProps) {
       <div className="royal-damask absolute inset-0 -z-10 opacity-10" aria-hidden="true" />
       <RoyalCrest className="absolute -bottom-28 -right-28 -z-10 h-[430px] w-[490px] text-champagne/[0.035]" />
       <SectionHeading
-        eyebrow="Kindly reply"
-        title="Will you join us?"
-        subtitle="Your presence would make our celebration complete. Please let us know if you can be there."
+        eyebrow="Final page · Your reply"
+        title="Will you be part of this chapter?"
+        subtitle="A place at our celebration is waiting for you. Please let us know if we may welcome you."
         inverted
       />
 
@@ -71,6 +71,9 @@ export function RsvpSection({ guestName, isPersonalized }: RsvpSectionProps) {
         <span className="engraved-corner engraved-corner--tr" aria-hidden="true" />
         <span className="engraved-corner engraved-corner--bl" aria-hidden="true" />
         <span className="engraved-corner engraved-corner--br" aria-hidden="true" />
+        <p className="mb-7 border border-champagne/25 bg-espresso/25 px-4 py-3 text-center text-xs leading-6 text-linen/75">
+          Online delivery is not connected yet. Please send your reply directly to Noureldin or Rana after preparing it here.
+        </p>
         <AnimatePresence mode="wait">
           {submitted ? (
             <motion.div
@@ -89,15 +92,13 @@ export function RsvpSection({ guestName, isPersonalized }: RsvpSectionProps) {
                   className="mt-7 font-display text-4xl text-linen outline-none sm:text-5xl"
                   tabIndex={-1}
                 >
-                  Thank you
+                  Reply prepared
                 </h3>
                 <p className="mx-auto mt-4 max-w-md text-sm font-light leading-7 text-linen/70">
-                  {attendance === 'yes'
-                    ? 'Your reply has been received in this preview. We cannot wait to celebrate this beautiful day with you.'
-                    : 'Thank you for letting us know. You will be in our thoughts as we celebrate this beautiful day.'}
+                  This website does not deliver responses yet. Please share your reply directly with Noureldin or Rana.
                 </p>
                 <button type="button" className="button-ghost mt-8" onClick={() => setSubmitted(false)}>
-                  Send another response
+                  Prepare another response
                 </button>
               </div>
             </motion.div>
@@ -118,7 +119,7 @@ export function RsvpSection({ guestName, isPersonalized }: RsvpSectionProps) {
                 </label>
 
                 <label className="field-label">
-                  Number of guests
+                  Party size (including you)
                   <select className="field-input appearance-none" name="guests" defaultValue="1" disabled={attendance === 'no'}>
                     {[1, 2, 3, 4, 5, 6].map((number) => (
                       <option key={number} value={number} className="text-espresso">
@@ -169,12 +170,12 @@ export function RsvpSection({ guestName, isPersonalized }: RsvpSectionProps) {
               </div>
 
               <button type="submit" className="button-primary mt-8 w-full justify-center" disabled={submitting}>
-                {submitting ? 'Sending…' : 'Send RSVP'}
-                <Send className="h-4 w-4" aria-hidden="true" />
+                {submitting ? 'Preparing…' : 'Prepare my reply'}
+                <ScrollText className="h-4 w-4" aria-hidden="true" />
               </button>
               {error && <p className="mt-4 text-center text-xs text-red-200" role="alert">{error}</p>}
               <p className="mt-4 text-center text-[10px] leading-5 text-linen/60">
-                Preview mode: responses are logged locally until a backend is connected.
+                Your details stay in this preview and are not sent online.
               </p>
             </motion.form>
           )}

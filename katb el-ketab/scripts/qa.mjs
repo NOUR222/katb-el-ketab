@@ -36,13 +36,13 @@ for (const device of [
   await page.waitForTimeout(1_200)
   const openingAccessibility = await new AxeBuilder({ page }).analyze()
   await page.keyboard.press('Tab')
-  const openingFocusWrapped = await page.getByRole('button', { name: 'Open invitation' }).evaluate(
+  const openingFocusWrapped = await page.getByRole('button', { name: 'Open our story and invitation' }).evaluate(
     (button) => button === document.activeElement,
   )
   await page.screenshot({ path: `${outputDir}/${device.name}-opening.png`, fullPage: false })
 
   const personalized = await page.getByText('Ahmed Family', { exact: true }).count()
-  await page.getByRole('button', { name: 'Open invitation' }).click()
+  await page.getByRole('button', { name: 'Open our story and invitation' }).click()
   await page.locator('#home').waitFor()
   await page.waitForTimeout(1_100)
 
@@ -69,10 +69,10 @@ for (const device of [
 
   await page.locator('#rsvp').scrollIntoViewIfNeeded()
   await page.getByLabel('Name').fill('Ahmed Family')
-  await page.getByLabel('Number of guests').selectOption('2')
+  await page.getByLabel('Party size (including you)').selectOption('2')
   await page.getByLabel(/A note for the couple/).fill('Looking forward to celebrating with you!')
-  await page.getByRole('button', { name: 'Send RSVP' }).click()
-  await page.getByRole('heading', { name: 'Thank you' }).waitFor()
+  await page.getByRole('button', { name: 'Prepare my reply' }).click()
+  await page.getByRole('heading', { name: 'Reply prepared' }).waitFor()
 
   const accessibility = await new AxeBuilder({ page }).analyze()
 

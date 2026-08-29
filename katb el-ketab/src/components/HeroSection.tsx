@@ -38,7 +38,7 @@ export function HeroSection({ guestName, isPersonalized }: HeroSectionProps) {
     >
       <div className="paper-field absolute inset-0 -z-20" aria-hidden="true" />
       <PalaceSilhouette className="pointer-events-none absolute -bottom-2 left-1/2 -z-10 h-40 w-[125%] -translate-x-1/2 text-gold/[0.075] sm:h-52 lg:h-60" />
-      <StarlightField className="z-0 text-gold/40" />
+      <StarlightField className="z-0 text-gold/55" density="sparse" />
       <nav
         className="absolute inset-x-0 top-0 z-20 mx-auto flex max-w-[1440px] items-center justify-between px-5 pb-5 pt-[max(1.5rem,env(safe-area-inset-top))] sm:px-8 lg:px-14"
         aria-label="Invitation navigation"
@@ -67,7 +67,7 @@ export function HeroSection({ guestName, isPersonalized }: HeroSectionProps) {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.25, duration: 0.7 }}
           >
-            <p className="eyebrow text-gold">A love written in gold</p>
+            <p className="eyebrow text-gold">Prologue · A love written in gold</p>
             <p className="mt-3 text-[10px] uppercase tracking-[0.22em] text-ink/80">Together with their families</p>
           </motion.div>
 
@@ -102,7 +102,7 @@ export function HeroSection({ guestName, isPersonalized }: HeroSectionProps) {
               {isPersonalized ? `Welcome, ${guestName}` : 'Welcome, dear family & friends'}
             </p>
             <p className="mt-2 text-xs font-light leading-6 text-ink/80 sm:text-sm">
-              We would be honoured to begin this beautiful chapter with you.
+              We would be honoured to have you beside us as the first page turns.
             </p>
           </motion.div>
         </motion.div>
@@ -131,7 +131,7 @@ export function HeroSection({ guestName, isPersonalized }: HeroSectionProps) {
             <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(216,189,139,.08),transparent_35%,rgba(45,36,31,.46))]" />
             <div className="arched-portrait__keyline absolute inset-2 border border-champagne/60" aria-hidden="true" />
             <p className="absolute inset-x-6 bottom-5 border-l border-champagne/60 bg-espresso/80 px-4 py-2.5 text-center font-display text-2xl italic leading-tight text-white shadow-lg sm:bottom-7 sm:left-7 sm:right-auto sm:max-w-[80%] sm:text-left sm:text-3xl">
-              Our happily ever after begins here
+              Here begins the promise we have chosen together
             </p>
           </div>
           <div className="absolute -right-1 top-8 flex flex-col items-center gap-3 text-gold sm:-right-4">

@@ -1,17 +1,24 @@
 import { Heart } from 'lucide-react'
 import { invitation } from '../data/invitation'
-import { RoyalCrest } from './RoyalOrnaments'
+import { OrnamentalDivider, RoyalCrest } from './RoyalOrnaments'
 
 export function Footer() {
   return (
-    <footer className="relative overflow-hidden border-t border-gold/20 bg-ivory px-5 pb-28 pt-10 text-center text-ink/80 sm:pb-24">
+    <footer className="relative overflow-hidden border-t border-gold/20 bg-ivory px-5 pb-28 pt-16 text-center text-ink/80 sm:pb-24 sm:pt-20">
       <div className="paper-field pointer-events-none absolute inset-0" aria-hidden="true" />
-      <div className="relative mx-auto flex max-w-6xl flex-col items-center justify-between gap-5 sm:flex-row sm:text-left">
+      <div className="relative mx-auto max-w-3xl pb-14 text-center">
+        <p className="eyebrow text-gold">Epilogue</p>
+        <OrnamentalDivider className="mx-auto mt-4 h-6 w-40 text-gold/65" />
+        <p className="mt-5 font-display text-3xl italic leading-snug text-espresso sm:text-4xl">
+          On the first evening of October, our next chapter begins—made brighter by every heart gathered with us.
+        </p>
+      </div>
+      <div className="relative mx-auto flex max-w-6xl flex-col items-center justify-between gap-5 border-t border-gold/15 pt-9 sm:flex-row sm:text-left">
         <div>
           <p className="font-display text-2xl text-espresso">
             {invitation.couple.shortGroom} <span className="text-gold">&</span> {invitation.couple.shortBride}
           </p>
-          <p className="mt-1 text-[9px] uppercase tracking-[0.23em]">{invitation.event.dateShort} · Alexandria</p>
+          <p className="mt-1 text-[9px] uppercase tracking-[0.23em]">Our next chapter · {invitation.event.dateShort}</p>
         </div>
         <RoyalCrest className="h-20 w-24 text-gold/70 sm:absolute sm:left-1/2 sm:-translate-x-1/2" />
         <p className="flex items-center gap-2 text-[10px] uppercase tracking-[0.18em]">

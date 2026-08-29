@@ -83,9 +83,9 @@ export function Gallery() {
       <RoyalCrest className="pointer-events-none absolute -left-28 top-24 h-[390px] w-[440px] text-gold/[0.035]" />
       <div className="relative">
         <SectionHeading
-          eyebrow="A glimpse of us"
-          title="Moments we treasure"
-          subtitle="A little window into our world — and the beautiful place where we will celebrate together."
+          eyebrow="Keepsake pages"
+          title="Glimpses along the way"
+          subtitle="A few moments from the life we treasure, and from the place where we will celebrate together."
         />
 
         <div className="mx-auto mt-14 grid max-w-6xl gap-5 sm:grid-cols-2 sm:gap-7 lg:grid-cols-3">

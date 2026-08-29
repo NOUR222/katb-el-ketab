@@ -17,10 +17,6 @@ export const invitation = {
     address: 'Gamee Al Moasah · Bab Sharq, Alexandria',
     mapsUrl: 'https://maps.app.goo.gl/ArP7HwdqR8PfUNc86?g_st=ic',
   },
-  music: {
-    // Stable URL resolved from the supplied SoundCloud short link.
-    trackUrl: 'https://soundcloud.com/user-878757150-100179626/home',
-  },
   images: {
     couple: {
       src: '/images/couple-960.webp',
@@ -50,19 +46,16 @@ export const invitation = {
 // Edit these chapters when you are ready to add personal dates and memories.
 export const storyChapters = [
   {
-    marker: 'I',
-    title: 'A beautiful beginning',
-    text: 'Two paths became one story — full of laughter, quiet moments, and the kind of love that feels like home.',
+    title: 'The first page',
+    text: 'Two lives, each following its own path, began to make room for one shared story.',
   },
   {
-    marker: 'II',
-    title: 'A promise made',
-    text: 'With grateful hearts, we are choosing forever and beginning our next chapter surrounded by the people we love.',
+    title: 'The story grew',
+    text: 'Through ordinary days, quiet kindness, and moments of joy, love became the place that felt like home.',
   },
   {
-    marker: 'III',
-    title: 'The best is yet to come',
-    text: 'Our Katb El-Ketab is not only a celebration of us, but of every person who helped our story bloom.',
+    title: 'The promise ahead',
+    text: 'With grateful hearts and our families beside us, we now begin the chapter that will carry both our names.',
   },
 ] as const
 
@@ -76,7 +69,7 @@ export type GalleryItem = {
 }
 
 export const galleryItems: GalleryItem[] = [
-  { ...invitation.images.couple, caption: 'Us, exactly as we are' },
-  { ...invitation.images.venue, caption: 'Where our forever begins' },
-  { ...invitation.images.venueAisle, caption: 'The aisle to our next chapter' },
+  { ...invitation.images.couple, caption: 'The joy we share' },
+  { ...invitation.images.venue, caption: 'The place awaiting us' },
+  { ...invitation.images.venueAisle, caption: 'The path to our promise' },
 ]

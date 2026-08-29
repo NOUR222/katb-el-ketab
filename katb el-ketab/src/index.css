@@ -152,12 +152,13 @@
 
 .royal-prelude {
   background:
-    radial-gradient(circle at 50% 42%, rgba(216, 189, 139, 0.17), transparent 29%),
-    linear-gradient(155deg, rgba(29, 23, 19, 0.97), rgba(45, 36, 31, 0.94));
+    radial-gradient(circle at 74% 20%, rgba(216, 189, 139, 0.13), transparent 20%),
+    radial-gradient(circle at 50% 48%, rgba(145, 101, 44, 0.16), transparent 34%),
+    linear-gradient(165deg, #0c1424 0%, #171824 47%, #2d241f 100%);
   opacity: 1;
   transform: scale(1);
   align-items: safe center;
-  transition: opacity 0.65s cubic-bezier(0.76, 0, 0.24, 1), transform 0.65s cubic-bezier(0.76, 0, 0.24, 1);
+  transition: opacity 0.75s cubic-bezier(0.76, 0, 0.24, 1), transform 0.75s cubic-bezier(0.76, 0, 0.24, 1);
 }
 
 .royal-prelude::before {
@@ -180,12 +181,86 @@
 }
 
 .royal-prelude__content {
-  animation: royal-prelude-reveal 1s 0.1s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation: royal-prelude-reveal 1.1s 0.62s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
 .royal-prelude__palace {
-  animation: royal-palace-rise 1.35s 0.18s cubic-bezier(0.22, 1, 0.36, 1) both;
+  z-index: 2;
+  animation: royal-palace-rise 1.55s 0.12s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
+
+.royal-prelude__sky-glow {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.52;
+  background:
+    linear-gradient(108deg, transparent 34%, rgba(216, 189, 139, 0.045) 47%, transparent 58%),
+    radial-gradient(ellipse at 50% 72%, rgba(216, 189, 139, 0.16), transparent 43%);
+  animation: celestial-breathe 8s ease-in-out infinite;
+}
+
+.royal-prelude__moon {
+  position: absolute;
+  right: clamp(1.5rem, 11vw, 10rem);
+  top: clamp(2.5rem, 10vh, 7rem);
+  z-index: 1;
+  width: clamp(54px, 8vw, 94px);
+  aspect-ratio: 1;
+  border: 1px solid rgba(243, 226, 188, 0.3);
+  border-radius: 9999px;
+  pointer-events: none;
+  background: radial-gradient(circle at 38% 35%, #fff8e8 0 8%, #e8d19d 32%, rgba(216, 189, 139, 0.18) 64%, transparent 70%);
+  box-shadow: 0 0 0 18px rgba(216, 189, 139, 0.025), 0 0 0 42px rgba(216, 189, 139, 0.018);
+  animation: moon-awaken 1.4s 0.18s ease-out both;
+}
+
+.royal-prelude__moon span {
+  position: absolute;
+  inset: 16%;
+  border: 1px solid rgba(45, 36, 31, 0.12);
+  border-radius: inherit;
+}
+
+.royal-prelude__mist {
+  position: absolute;
+  left: -18%;
+  z-index: 3;
+  width: 136%;
+  height: 17%;
+  pointer-events: none;
+  opacity: 0.24;
+  background: linear-gradient(90deg, transparent, rgba(251, 248, 242, 0.2) 22%, rgba(216, 189, 139, 0.16) 52%, rgba(251, 248, 242, 0.17) 78%, transparent);
+}
+
+.royal-prelude__mist--far {
+  bottom: 13%;
+  animation: palace-mist-drift 11s -3s ease-in-out infinite alternate;
+}
+
+.royal-prelude__mist--near {
+  bottom: -1%;
+  opacity: 0.17;
+  transform: scaleX(-1);
+  animation: palace-mist-drift-reverse 14s -7s ease-in-out infinite alternate;
+}
+
+.royal-prelude__motes {
+  z-index: 4;
+}
+
+.royal-prelude__motes .gilded-mote { animation-duration: 3.2s; }
+.royal-prelude__motes .gilded-mote:nth-child(1) { animation-delay: 0.05s; }
+.royal-prelude__motes .gilded-mote:nth-child(2) { animation-delay: 0.2s; }
+.royal-prelude__motes .gilded-mote:nth-child(3) { animation-delay: 0.38s; }
+.royal-prelude__motes .gilded-mote:nth-child(4) { animation-delay: 0.55s; }
+.royal-prelude__motes .gilded-mote:nth-child(5) { animation-delay: 0.72s; }
+.royal-prelude__motes .gilded-mote:nth-child(6) { animation-delay: 0.9s; }
+.royal-prelude__motes .gilded-mote:nth-child(7) { animation-delay: 0.28s; }
+.royal-prelude__motes .gilded-mote:nth-child(8) { animation-delay: 0.48s; }
+.royal-prelude__motes .gilded-mote:nth-child(9) { animation-delay: 0.68s; }
+.royal-prelude__motes .gilded-mote:nth-child(10) { animation-delay: 0.84s; }
 
 .royal-prelude__trail .magic-trail__path {
   animation-delay: 0.1s;
@@ -200,11 +275,111 @@
 .royal-prelude__trail .magic-trail__spark--three { --awaken-delay: 1s; }
 
 .royal-prelude__skip {
-  animation: royal-prelude-skip 0.7s 0.8s ease-out both;
+  animation: royal-prelude-skip 0.45s 0.2s ease-out both;
 }
 
 .opening-palace {
   animation: royal-palace-rise 1.4s 0.12s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.opening-starlight {
+  transition: opacity 0.55s ease;
+}
+
+.opening-gateway-glow {
+  position: absolute;
+  inset: 0;
+  z-index: 40;
+  pointer-events: none;
+  opacity: 0;
+  background: radial-gradient(circle at 50% 50%, rgba(255, 244, 216, 0.66), rgba(216, 189, 139, 0.15) 20%, transparent 48%);
+  transform: scale(0.72);
+  transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.opening-screen--closing .opening-gateway-glow {
+  opacity: 0.72;
+  transform: scale(1.35);
+}
+
+.opening-screen--closing .opening-starlight {
+  opacity: 0;
+}
+
+.enchanted-palace__hill--far {
+  fill: #252334;
+  opacity: 0.82;
+}
+
+.enchanted-palace__hill--near {
+  fill: #121620;
+  opacity: 0.96;
+}
+
+.enchanted-palace__body {
+  fill: #17161d;
+  stroke: currentColor;
+  stroke-width: 1.15;
+  stroke-opacity: 0.42;
+}
+
+.enchanted-palace__roof {
+  fill: rgba(145, 101, 44, 0.24);
+  stroke: currentColor;
+  stroke-width: 1.25;
+  stroke-opacity: 0.62;
+}
+
+.enchanted-palace__roof--central {
+  fill: rgba(145, 101, 44, 0.3);
+}
+
+.enchanted-palace__finial,
+.enchanted-palace__lantern {
+  fill: rgba(216, 189, 139, 0.16);
+  stroke: currentColor;
+  stroke-width: 1.1;
+  stroke-opacity: 0.75;
+}
+
+.enchanted-palace__terrace {
+  fill: #11141d;
+  stroke: currentColor;
+  stroke-width: 0.9;
+  stroke-opacity: 0.38;
+}
+
+.enchanted-palace__detail,
+.enchanted-palace__arcade,
+.enchanted-palace__garden,
+.enchanted-palace__mist-lines {
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.enchanted-palace__detail { stroke-width: 1; stroke-opacity: 0.4; }
+.enchanted-palace__arcade { stroke-width: 1.1; stroke-opacity: 0.52; }
+.enchanted-palace__garden { stroke-width: 1.35; stroke-opacity: 0.42; }
+.enchanted-palace__mist-lines { stroke-width: 1; stroke-opacity: 0.18; }
+
+.enchanted-palace__window {
+  fill: #f0d69b;
+  opacity: 0.56;
+  animation: palace-window-glow 6.8s ease-in-out infinite;
+}
+
+.enchanted-palace__window--gate {
+  fill: #f7e5bd;
+  opacity: 0.82;
+  animation-duration: 5.4s;
+}
+
+.enchanted-palace__monogram {
+  fill: #2d241f;
+  opacity: 0.76;
+  letter-spacing: 2px;
 }
 
 .fairytale-curtain {
@@ -409,6 +584,53 @@
   content: '';
 }
 
+.storybook-spread {
+  box-shadow:
+    0 34px 90px rgba(56, 43, 31, 0.12),
+    inset 0 0 70px rgba(145, 101, 44, 0.035),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.48);
+}
+
+.storybook-spread::before {
+  position: absolute;
+  inset: 0;
+  content: '';
+  pointer-events: none;
+  background:
+    linear-gradient(90deg, transparent 0 48%, rgba(70, 58, 50, 0.025) 50%, transparent 52%),
+    radial-gradient(circle at 50% -8%, rgba(216, 189, 139, 0.13), transparent 35%);
+}
+
+.storybook-spread::after {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 44px;
+  height: 44px;
+  content: '';
+  pointer-events: none;
+  background: linear-gradient(135deg, rgba(216, 189, 139, 0.08) 0 48%, rgba(145, 101, 44, 0.18) 50%, #f7f3eb 52%);
+  box-shadow: -8px -8px 20px rgba(70, 58, 50, 0.04);
+}
+
+.illuminated-chapter {
+  border: 1px solid rgba(145, 101, 44, 0.14);
+  background: linear-gradient(145deg, rgba(251, 248, 242, 0.68), rgba(238, 229, 215, 0.28));
+  padding: 1.25rem;
+  box-shadow: inset 0 0 24px rgba(145, 101, 44, 0.025);
+}
+
+.illuminated-chapter::before {
+  position: absolute;
+  left: 9px;
+  top: 9px;
+  width: 14px;
+  height: 14px;
+  border-left: 1px solid rgba(145, 101, 44, 0.32);
+  border-top: 1px solid rgba(145, 101, 44, 0.32);
+  content: '';
+}
+
 .countdown-frame {
   box-shadow: inset 0 0 0 1px rgba(251, 248, 242, 0.07), 0 26px 80px rgba(0, 0, 0, 0.16);
 }
@@ -495,22 +717,14 @@
 .opening-screen {
   opacity: 1;
   transform: scale(1);
-  filter: blur(0);
   transition: opacity 0.8s cubic-bezier(0.76, 0, 0.24, 1),
-    transform 0.8s cubic-bezier(0.76, 0, 0.24, 1),
-    filter 0.8s cubic-bezier(0.76, 0, 0.24, 1);
+    transform 0.8s cubic-bezier(0.76, 0, 0.24, 1);
 }
 
 .opening-screen--closing {
   pointer-events: none;
   opacity: 0;
   transform: scale(1.025);
-  filter: blur(5px);
-}
-
-@keyframes music-pulse {
-  0% { transform: scale(1); opacity: 0.7; }
-  100% { transform: scale(1.55); opacity: 0; }
 }
 
 @keyframes gentle-bounce {
@@ -555,6 +769,32 @@
   100% { opacity: 1; }
 }
 
+@keyframes celestial-breathe {
+  0%, 100% { opacity: 0.42; transform: scale(1); }
+  50% { opacity: 0.6; transform: scale(1.025); }
+}
+
+@keyframes moon-awaken {
+  0% { opacity: 0; transform: scale(0.82); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes palace-mist-drift {
+  0% { transform: translate3d(-2.5%, 0, 0); }
+  100% { transform: translate3d(2.5%, -4px, 0); }
+}
+
+@keyframes palace-mist-drift-reverse {
+  0% { transform: translate3d(2.5%, 0, 0) scaleX(-1); }
+  100% { transform: translate3d(-2.5%, -3px, 0) scaleX(-1); }
+}
+
+@keyframes palace-window-glow {
+  0%, 100% { opacity: 0.52; }
+  42% { opacity: 0.84; }
+  68% { opacity: 0.64; }
+}
+
 @keyframes opening-drift {
   0% { transform: scale(1.1); }
   100% { transform: scale(1.145); }
@@ -585,10 +825,6 @@
   78% { opacity: 0.38; transform: scale(0.94); }
 }
 
-.animate-music-pulse {
-  animation: music-pulse 1.8s ease-out infinite;
-}
-
 .animate-gentle-bounce {
   animation: gentle-bounce 2s ease-in-out infinite;
 }
@@ -608,6 +844,44 @@
 
   .opening-card > .opening-crest {
     height: 5.75rem;
+  }
+}
+
+@media (max-height: 600px) and (orientation: landscape) {
+  .royal-prelude__moon {
+    display: none;
+  }
+
+  .royal-prelude__palace {
+    height: 68svh;
+    min-height: 180px;
+    max-height: 250px;
+  }
+
+  .royal-prelude {
+    padding-block: 1rem;
+  }
+
+  .royal-prelude__tiara {
+    height: 2.65rem;
+    margin-top: 0.25rem;
+  }
+
+  .royal-prelude__monogram {
+    margin-top: 0;
+    font-size: 3.75rem;
+  }
+
+  .royal-prelude__divider {
+    height: 1.25rem;
+    margin-top: 0.25rem;
+  }
+
+  .royal-prelude__copy {
+    max-width: 30rem;
+    margin-top: 0.3rem;
+    font-size: 0.875rem;
+    line-height: 1.4;
   }
 }
 
@@ -660,4 +934,14 @@
   .royal-prelude__skip {
     animation: none !important;
   }
+
+  .royal-prelude__sky-glow,
+  .royal-prelude__moon,
+  .royal-prelude__mist,
+  .enchanted-palace__window {
+    animation: none !important;
+  }
+
+  .royal-prelude__moon { opacity: 1; transform: none; }
+  .enchanted-palace__window { opacity: 0.68; }
 }

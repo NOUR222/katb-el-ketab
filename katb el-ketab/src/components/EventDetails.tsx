@@ -17,9 +17,9 @@ export function EventDetails() {
       <div className="ornament-dot left-[8%] top-24" aria-hidden="true" />
       <div className="ornament-dot bottom-20 right-[12%]" aria-hidden="true" />
       <SectionHeading
-        eyebrow="Save the date"
-        title="A sacred promise, a beautiful beginning."
-        subtitle="Please join us as we celebrate our Katb El-Ketab and step into a lifetime together."
+        eyebrow="Chapter I · The promise"
+        title="The day our next chapter begins"
+        subtitle="With the blessing of our families, we invite you to witness our sacred promise and the beginning of a lifetime together."
       />
 
       <motion.div
@@ -38,7 +38,7 @@ export function EventDetails() {
         <span className="engraved-corner engraved-corner--br !text-gold/60" aria-hidden="true" />
         <TiaraMark className="mx-auto h-10 w-28 text-gold/70" />
         <p className="text-center font-display text-3xl italic text-gold sm:text-4xl">{invitation.event.name}</p>
-        <p className="mt-3 text-center text-[10px] uppercase leading-5 tracking-[0.25em] text-ink/80">With the blessing of our families</p>
+        <p className="mt-3 text-center text-[10px] uppercase leading-5 tracking-[0.25em] text-ink/80">A promise witnessed by those we love</p>
         <div className="mx-auto mt-8 h-px max-w-2xl bg-gradient-to-r from-transparent via-gold/50 to-transparent" />
         <div className="mt-10 grid gap-9 md:grid-cols-3 md:gap-0">
           {detailItems.map(({ icon: Icon, label, value }, index) => (

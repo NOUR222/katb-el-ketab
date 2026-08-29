@@ -1,6 +1,7 @@
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
 import { useEffect, useMemo, useState } from 'react'
 import { invitation } from '../data/invitation'
+import { StarlightField } from './RoyalOrnaments'
 import { SectionHeading } from './SectionHeading'
 
 type TimeLeft = {
@@ -72,11 +73,12 @@ export function Countdown() {
       </div>
       <div className="absolute inset-0 -z-10 bg-espresso/90" />
       <div className="royal-damask absolute inset-0 -z-10 opacity-10" aria-hidden="true" />
+      <StarlightField className="z-0 text-champagne/70" density="sparse" />
       <div className="absolute left-1/2 top-0 h-px w-32 -translate-x-1/2 bg-champagne" />
 
       <SectionHeading
-        eyebrow="Until we celebrate"
-        title="Counting every moment"
+        eyebrow="Interlude · Until we gather"
+        title="The evening draws near"
         subtitle={`${invitation.event.dateLabel} at ${invitation.event.timeLabel}`}
         inverted
       />
@@ -105,7 +107,7 @@ export function Countdown() {
           </div>
         ))}
       </motion.div>
-      <p className="mt-9 text-center font-display text-2xl italic text-linen/70">Time left until we meet</p>
+      <p className="mt-9 text-center font-display text-2xl italic text-linen/70">Until we meet beneath the Alexandrian sky</p>
     </section>
   )
 }
