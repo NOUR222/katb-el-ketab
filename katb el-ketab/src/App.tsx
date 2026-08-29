@@ -1,7 +1,10 @@
 import { lazy, Suspense, useEffect, useState } from 'react'
 import { MotionConfig } from 'framer-motion'
+import { MusicPlayer } from './components/MusicPlayer'
 import { OpeningScreen } from './components/OpeningScreen'
+import { invitation } from './data/invitation'
 import { useGuestName } from './hooks/useGuestName'
+import { useSoundCloud } from './hooks/useSoundCloud'
 
 const loadInvitationContent = () => import('./InvitationContent')
 const InvitationContent = lazy(loadInvitationContent)
@@ -12,6 +15,7 @@ export default function App() {
   const [isPreparing, setIsPreparing] = useState(false)
   const [openingError, setOpeningError] = useState('')
   const guest = useGuestName()
+  const music = useSoundCloud(invitation.music.trackUrl)
 
   useEffect(() => {
     document.body.style.overflow = openingVisible ? 'hidden' : ''
@@ -22,12 +26,14 @@ export default function App() {
 
   const openInvitation = async () => {
     if (opened || isPreparing) return
+    music.play()
     setIsPreparing(true)
     setOpeningError('')
 
     try {
       await loadInvitationContent()
     } catch {
+      music.pause()
       setIsPreparing(false)
       setOpeningError('The invitation could not be prepared just now. Please try opening it again.')
       return
@@ -62,6 +68,14 @@ export default function App() {
           onOpen={openInvitation}
         />
       )}
+
+      <MusicPlayer
+        iframeRef={music.iframeRef}
+        status={music.status}
+        trackUrl={invitation.music.trackUrl}
+        visible={opened && !openingVisible}
+        onToggle={music.toggle}
+      />
 
       <div inert={openingVisible} aria-hidden={openingVisible}>
         <Suspense fallback={<div className="min-h-screen bg-ivory" aria-hidden="true" />}>

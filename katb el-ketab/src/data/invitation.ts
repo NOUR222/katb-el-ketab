@@ -17,6 +17,10 @@ export const invitation = {
     address: 'Gamee Al Moasah · Bab Sharq, Alexandria',
     mapsUrl: 'https://maps.app.goo.gl/ArP7HwdqR8PfUNc86?g_st=ic',
   },
+  music: {
+    // Stable URL resolved from the supplied SoundCloud short link.
+    trackUrl: 'https://soundcloud.com/user-878757150-100179626/home',
+  },
   images: {
     couple: {
       src: '/images/couple-960.webp',

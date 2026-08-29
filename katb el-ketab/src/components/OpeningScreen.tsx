@@ -31,7 +31,7 @@ export function OpeningScreen({ guestName, isPersonalized, isClosing, isPreparin
   useEffect(() => {
     if (preludePhase !== 'visible') return
 
-    const revealTimer = window.setTimeout(() => setPreludePhase('leaving'), 3100)
+    const revealTimer = window.setTimeout(() => setPreludePhase('leaving'), 4600)
     return () => window.clearTimeout(revealTimer)
   }, [preludePhase])
 
