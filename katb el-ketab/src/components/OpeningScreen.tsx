@@ -6,10 +6,11 @@ type OpeningScreenProps = {
   guestName: string
   isPersonalized: boolean
   isClosing: boolean
+  isMusicPreparing: boolean
   onOpen: () => void
 }
 
-export function OpeningScreen({ guestName, isPersonalized, isClosing, onOpen }: OpeningScreenProps) {
+export function OpeningScreen({ guestName, isPersonalized, isClosing, isMusicPreparing, onOpen }: OpeningScreenProps) {
   const dialogRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
@@ -78,11 +79,12 @@ export function OpeningScreen({ guestName, isPersonalized, isClosing, onOpen }: 
 
         <button
           type="button"
-          className="button-primary relative mt-9"
+          className="button-primary relative mt-9 disabled:cursor-wait disabled:opacity-60"
           onClick={onOpen}
+          disabled={isMusicPreparing || isClosing}
         >
           <MailOpen className="h-4 w-4" aria-hidden="true" />
-          Open invitation
+          {isMusicPreparing ? 'Preparing music…' : 'Open invitation'}
         </button>
         <p className="mt-4 text-[10px] uppercase tracking-[0.2em] text-linen/65">Music will begin after opening</p>
       </div>

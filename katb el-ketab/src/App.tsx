@@ -47,6 +47,7 @@ export default function App() {
           guestName={guest.name}
           isPersonalized={guest.isPersonalized}
           isClosing={opened}
+          isMusicPreparing={music.status === 'loading'}
           onOpen={openInvitation}
         />
       )}
