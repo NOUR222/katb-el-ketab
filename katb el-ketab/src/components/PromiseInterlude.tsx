@@ -1,12 +1,21 @@
-import { motion } from 'framer-motion'
+import { motion, useInView } from 'framer-motion'
+import { useRef } from 'react'
 import { invitation } from '../data/invitation'
-import { GildedMotes, OrnamentalDivider, RoyalCrest } from './RoyalOrnaments'
+import { MagicTrail, PalaceSilhouette, TiaraMark } from './FairytaleOrnaments'
+import { GildedMotes, OrnamentalDivider } from './RoyalOrnaments'
 
 export function PromiseInterlude() {
+  const sectionRef = useRef<HTMLElement>(null)
+  const isInView = useInView(sectionRef, { once: true, amount: 0.15 })
+
   return (
-    <section className="royal-interlude relative isolate overflow-hidden bg-espresso px-5 py-24 text-linen sm:px-8 sm:py-32">
+    <section ref={sectionRef} className="royal-interlude relative isolate overflow-hidden bg-espresso px-5 py-24 text-linen sm:px-8 sm:py-32">
       <div className="royal-damask absolute inset-0 -z-20 opacity-60" aria-hidden="true" />
       <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_50%_42%,rgba(216,189,139,.14),transparent_36%)]" aria-hidden="true" />
+      <PalaceSilhouette className="pointer-events-none absolute -bottom-1 left-1/2 -z-10 h-48 w-[130%] -translate-x-1/2 text-champagne/25 sm:h-64" />
+      {isInView && (
+        <MagicTrail className="pointer-events-none absolute -left-20 top-5 z-0 h-48 w-80 -scale-x-100 text-champagne/30" />
+      )}
       <GildedMotes />
 
       <motion.div
@@ -23,17 +32,17 @@ export function PromiseInterlude() {
         <span className="engraved-corner engraved-corner--bl" aria-hidden="true" />
         <span className="engraved-corner engraved-corner--br" aria-hidden="true" />
 
-        <RoyalCrest className="mx-auto h-28 w-32 text-champagne sm:h-32 sm:w-36" />
-        <p className="eyebrow mt-5 text-champagne">Our promise</p>
+        <TiaraMark className="mx-auto h-16 w-40 text-champagne sm:h-20 sm:w-48" />
+        <p className="eyebrow mt-5 text-champagne">A promise from {invitation.couple.shortGroom}</p>
         <h2 className="mx-auto mt-5 max-w-3xl font-display text-5xl font-medium leading-[0.94] text-linen sm:text-6xl lg:text-7xl">
-          Two hearts, one beautiful forever.
+          {invitation.couple.shortBride}, you are the grace at the heart of our story.
         </h2>
         <OrnamentalDivider className="mx-auto mt-8 h-8 w-52 text-champagne/70 sm:w-64" />
         <p className="mx-auto mt-6 max-w-2xl font-display text-2xl italic leading-relaxed text-linen/75 sm:text-3xl">
-          Side by side, hand in hand, we begin the sweetest chapter of our story.
+          May every chapter we share remind you how deeply you are cherished.
         </p>
-        <p className="mt-7 text-[9px] uppercase tracking-[0.3em] text-champagne/75">
-          {invitation.couple.shortGroom} <span className="px-2 font-display text-sm italic">&amp;</span> {invitation.couple.shortBride}
+        <p className="mt-7 text-[10px] uppercase tracking-[0.28em] text-champagne/80">
+          Always yours <span className="px-2 font-display text-base italic">·</span> {invitation.couple.shortGroom}
         </p>
       </motion.div>
     </section>

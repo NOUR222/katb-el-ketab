@@ -3,7 +3,7 @@ import { ArrowDown, Heart } from 'lucide-react'
 import { useRef } from 'react'
 import { invitation } from '../data/invitation'
 import { BotanicalMark } from './BotanicalMark'
-import { RoyalCrest } from './RoyalOrnaments'
+import { MagicTrail, PalaceSilhouette, TiaraMark } from './FairytaleOrnaments'
 
 const ceremonyDate = new Date(invitation.event.isoDate)
 const ceremonyDay = new Intl.DateTimeFormat('en-GB', {
@@ -36,7 +36,7 @@ export function HeroSection({ guestName, isPersonalized }: HeroSectionProps) {
       tabIndex={-1}
     >
       <div className="paper-field absolute inset-0 -z-20" aria-hidden="true" />
-      <RoyalCrest className="absolute -left-24 top-1/3 -z-10 hidden h-[430px] w-[500px] text-gold/[0.035] lg:block" />
+      <PalaceSilhouette className="pointer-events-none absolute -bottom-2 left-1/2 -z-10 h-40 w-[125%] -translate-x-1/2 text-gold/[0.075] sm:h-52 lg:h-60" />
       <nav
         className="absolute inset-x-0 top-0 z-20 mx-auto flex max-w-[1440px] items-center justify-between px-5 pb-5 pt-[max(1.5rem,env(safe-area-inset-top))] sm:px-8 lg:px-14"
         aria-label="Invitation navigation"
@@ -60,14 +60,14 @@ export function HeroSection({ guestName, isPersonalized }: HeroSectionProps) {
       <div className="mx-auto grid min-h-[100svh] max-w-[1440px] items-center gap-8 px-5 pb-16 pt-28 sm:px-8 lg:grid-cols-[0.92fr_1.08fr] lg:gap-16 lg:px-14 lg:pb-12 lg:pt-28">
         <motion.div style={{ y: reduceMotion ? 0 : contentY }} className="relative z-10 order-2 pb-3 text-center lg:order-1 lg:text-left">
           <BotanicalMark className="absolute -left-24 -top-24 hidden h-56 text-gold/10 lg:block" />
-          <motion.p
-            className="eyebrow text-gold"
+          <motion.div
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.25, duration: 0.7 }}
           >
-            Together with their families
-          </motion.p>
+            <p className="eyebrow text-gold">A love written in gold</p>
+            <p className="mt-3 text-[10px] uppercase tracking-[0.22em] text-ink/80">Together with their families</p>
+          </motion.div>
 
           <motion.h1
             className="mt-6 font-display text-[clamp(4.15rem,18vw,7rem)] font-medium leading-[0.68] tracking-[-0.055em] text-espresso lg:text-[clamp(5.8rem,8.2vw,8.4rem)]"
@@ -112,6 +112,8 @@ export function HeroSection({ guestName, isPersonalized }: HeroSectionProps) {
           transition={{ duration: 1.1, ease: [0.22, 1, 0.36, 1] }}
           style={{ y: reduceMotion ? 0 : photoY }}
         >
+          <MagicTrail className="pointer-events-none absolute -right-14 -top-12 z-10 h-40 w-64 text-gold/50 sm:-right-20 sm:h-48 sm:w-80" />
+          <TiaraMark className="pointer-events-none absolute -top-9 left-[48%] z-10 h-12 w-28 -translate-x-1/2 text-gold/75 sm:h-14 sm:w-32" />
           <div className="absolute -left-3 top-12 h-[78%] w-[85%] rounded-t-[48%] border border-gold/35 sm:-left-6" />
           <div className="arched-portrait relative ml-auto aspect-[3/4] w-[92%] overflow-hidden bg-parchment shadow-editorial">
             <img
@@ -126,8 +128,8 @@ export function HeroSection({ guestName, isPersonalized }: HeroSectionProps) {
             />
             <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(216,189,139,.08),transparent_35%,rgba(45,36,31,.46))]" />
             <div className="arched-portrait__keyline absolute inset-2 border border-champagne/60" aria-hidden="true" />
-            <p className="absolute bottom-5 left-20 font-display text-2xl italic text-white sm:bottom-7 sm:left-7 sm:text-3xl">
-              Our forever begins here
+            <p className="absolute inset-x-6 bottom-5 border-l border-champagne/60 bg-espresso/80 px-4 py-2.5 text-center font-display text-2xl italic leading-tight text-white shadow-lg sm:bottom-7 sm:left-7 sm:right-auto sm:max-w-[80%] sm:text-left sm:text-3xl">
+              Our happily ever after begins here
             </p>
           </div>
           <div className="absolute -right-1 top-8 flex flex-col items-center gap-3 text-gold sm:-right-4">

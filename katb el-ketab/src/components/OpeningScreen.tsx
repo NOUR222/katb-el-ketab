@@ -2,6 +2,7 @@ import { MailOpen } from 'lucide-react'
 import { useEffect, useRef } from 'react'
 import { invitation } from '../data/invitation'
 import { BotanicalMark } from './BotanicalMark'
+import { MagicTrail, PalaceSilhouette, TiaraMark } from './FairytaleOrnaments'
 import { GildedMotes, OrnamentalDivider, RoyalCrest } from './RoyalOrnaments'
 
 type OpeningScreenProps = {
@@ -53,10 +54,15 @@ export function OpeningScreen({ guestName, isPersonalized, isClosing, isPreparin
       <div className="royal-damask absolute inset-0 -z-10 opacity-20" aria-hidden="true" />
       <GildedMotes />
 
-      <BotanicalMark className="absolute -left-5 top-8 h-56 text-champagne/20 sm:left-8 sm:h-64" />
-      <BotanicalMark className="absolute -right-5 bottom-8 h-56 text-champagne/20 sm:right-8 sm:h-64" mirrored />
+      <div className="fairytale-curtain fairytale-curtain--left" aria-hidden="true" />
+      <div className="fairytale-curtain fairytale-curtain--right" aria-hidden="true" />
+      <PalaceSilhouette className="pointer-events-none absolute -bottom-1 left-1/2 z-0 h-48 w-[min(1100px,145vw)] -translate-x-1/2 text-champagne/30 sm:h-60" />
+      <MagicTrail className="pointer-events-none absolute right-[-3rem] top-4 z-0 h-40 w-64 text-champagne/45 sm:right-[3%] sm:top-[5%] sm:h-48 sm:w-80" />
 
-      <div className="opening-card relative w-full max-w-[550px] px-6 py-9 text-center sm:px-12 sm:py-12">
+      <BotanicalMark className="absolute -left-5 top-8 z-[1] h-56 text-champagne/20 sm:left-8 sm:h-64" />
+      <BotanicalMark className="absolute -right-5 bottom-8 z-[1] h-56 text-champagne/20 sm:right-8 sm:h-64" mirrored />
+
+      <div className="opening-card relative z-10 w-full max-w-[560px] px-6 py-9 text-center sm:px-12 sm:py-12">
         <div className="absolute inset-0 border border-champagne/45" aria-hidden="true" />
         <div className="absolute inset-2 border border-linen/15" aria-hidden="true" />
         <span className="absolute left-1/2 top-0 h-px w-20 -translate-x-1/2 bg-champagne" />
@@ -64,10 +70,11 @@ export function OpeningScreen({ guestName, isPersonalized, isClosing, isPreparin
         <span className="engraved-corner engraved-corner--tr" aria-hidden="true" />
         <span className="engraved-corner engraved-corner--bl" aria-hidden="true" />
         <span className="engraved-corner engraved-corner--br" aria-hidden="true" />
+        <TiaraMark className="absolute -top-7 left-1/2 h-12 w-28 -translate-x-1/2 text-champagne" />
 
         <RoyalCrest className="opening-crest animate-monogram-sway mx-auto h-28 w-32 text-champagne sm:h-32 sm:w-36" />
 
-        <p className="eyebrow mt-4 text-champagne">A celebration of love</p>
+        <p className="eyebrow mt-4 text-champagne">Once upon a forever</p>
         <OrnamentalDivider className="mx-auto mt-4 h-6 w-40 text-champagne/70" />
         <h1
           id="invitation-title"
@@ -88,9 +95,10 @@ export function OpeningScreen({ guestName, isPersonalized, isClosing, isPreparin
           className="button-primary relative mt-8 aria-disabled:cursor-wait aria-disabled:opacity-60"
           onClick={onOpen}
           aria-disabled={isPreparing || isClosing}
+          aria-label={isPreparing ? 'Preparing our story, please wait' : 'Enter our story and open invitation'}
         >
           <MailOpen className="h-4 w-4" aria-hidden="true" />
-          {isPreparing ? 'Preparing invitation…' : 'Open invitation'}
+          {isPreparing ? 'Preparing our story…' : 'Enter our story'}
         </button>
         {error && <p className="mx-auto mt-4 max-w-sm text-xs leading-5 text-red-100" role="alert">{error}</p>}
         <p className="mt-4 text-[10px] uppercase tracking-[0.2em] text-linen/65">Music can be played after opening</p>

@@ -10,8 +10,8 @@ export function StoryTimeline() {
       <div className="absolute left-0 top-1/3 h-80 w-80 -translate-x-1/2 rounded-full bg-champagne/10 blur-3xl" aria-hidden="true" />
       <RoyalCrest className="absolute -right-32 bottom-10 h-[420px] w-[480px] text-gold/[0.035]" />
       <SectionHeading
-        eyebrow="Our story"
-        title="From this day forward"
+        eyebrow="A timeless love story"
+        title="Once upon our forever"
         subtitle="The sweetest stories are written slowly — in ordinary days, shared dreams, and a thousand little moments of choosing one another."
       />
 
@@ -65,7 +65,7 @@ export function StoryTimeline() {
         <div className="absolute inset-x-10 top-0 h-px bg-gradient-to-r from-transparent via-gold/45 to-transparent" />
         <OrnamentalDivider className="mx-auto h-7 w-44 text-gold/65" />
         <blockquote className="mt-5 font-display text-3xl italic leading-tight text-espresso sm:text-4xl">
-          “And suddenly, every love song was about you.”
+          “Every ordinary day became part of our forever.”
         </blockquote>
         <div className="absolute inset-x-10 bottom-0 h-px bg-gradient-to-r from-transparent via-gold/45 to-transparent" />
       </motion.div>

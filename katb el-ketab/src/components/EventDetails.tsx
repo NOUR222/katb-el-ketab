@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
 import { CalendarDays, Clock3, MapPin } from 'lucide-react'
 import { invitation } from '../data/invitation'
+import { TiaraMark } from './FairytaleOrnaments'
 import { RoyalCrest } from './RoyalOrnaments'
 import { SectionHeading } from './SectionHeading'
 
@@ -35,6 +36,7 @@ export function EventDetails() {
         <span className="engraved-corner engraved-corner--tr !text-gold/60" aria-hidden="true" />
         <span className="engraved-corner engraved-corner--bl !text-gold/60" aria-hidden="true" />
         <span className="engraved-corner engraved-corner--br !text-gold/60" aria-hidden="true" />
+        <TiaraMark className="mx-auto h-10 w-28 text-gold/70" />
         <p className="text-center font-display text-3xl italic text-gold sm:text-4xl">{invitation.event.name}</p>
         <p className="mt-3 text-center text-[10px] uppercase leading-5 tracking-[0.25em] text-ink/80">With the blessing of our families</p>
         <div className="mx-auto mt-8 h-px max-w-2xl bg-gradient-to-r from-transparent via-gold/50 to-transparent" />
