@@ -38,4 +38,4 @@ The form currently logs a typed submission object in the browser console. Replac
 
 ## Music
 
-The SoundCloud widget is loaded with autoplay disabled. Playback is requested only after the visitor presses **Open our story**, and the floating control can pause or resume it.
+The invitation uses the first 30 seconds of the local song in `public/audio/invitation-song.mp3`. Playback starts after the visitor presses **Open our story**, and the floating control can pause, resume, or replay the clip.

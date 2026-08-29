@@ -3,8 +3,8 @@ import { MotionConfig } from 'framer-motion'
 import { MusicPlayer } from './components/MusicPlayer'
 import { OpeningScreen } from './components/OpeningScreen'
 import { invitation } from './data/invitation'
+import { useAudioClip } from './hooks/useAudioClip'
 import { useGuestName } from './hooks/useGuestName'
-import { useSoundCloud } from './hooks/useSoundCloud'
 
 const loadInvitationContent = () => import('./InvitationContent')
 const InvitationContent = lazy(loadInvitationContent)
@@ -15,7 +15,7 @@ export default function App() {
   const [isPreparing, setIsPreparing] = useState(false)
   const [openingError, setOpeningError] = useState('')
   const guest = useGuestName()
-  const music = useSoundCloud(invitation.music.trackUrl)
+  const music = useAudioClip()
 
   useEffect(() => {
     document.body.style.overflow = openingVisible ? 'hidden' : ''
@@ -70,9 +70,9 @@ export default function App() {
       )}
 
       <MusicPlayer
-        iframeRef={music.iframeRef}
+        audioRef={music.audioRef}
         status={music.status}
-        trackUrl={invitation.music.trackUrl}
+        src={invitation.music.src}
         visible={opened && !openingVisible}
         onToggle={music.toggle}
       />

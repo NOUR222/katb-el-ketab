@@ -18,8 +18,7 @@ export const invitation = {
     mapsUrl: 'https://maps.app.goo.gl/ArP7HwdqR8PfUNc86?g_st=ic',
   },
   music: {
-    // Stable URL resolved from the supplied SoundCloud short link.
-    trackUrl: 'https://soundcloud.com/user-878757150-100179626/home',
+    src: '/audio/invitation-song.mp3',
   },
   images: {
     couple: {
